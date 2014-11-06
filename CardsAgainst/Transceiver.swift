@@ -41,11 +41,11 @@ public class Transceiver: SessionDelegate {
     }
 
     func sessionForPeer(peerID: MCPeerID) -> MCSession? {
-        if (advertiser.mcSession.connectedPeers as [MCPeerID]).filter({ $0.displayName == peerID.displayName }).count > 0 {
+        if (advertiser.mcSession.connectedPeers as [MCPeerID]).filter({ $0 == peerID }).count > 0 {
             return advertiser.mcSession
         }
 
-        if (browser.mcSession.connectedPeers as [MCPeerID]).filter({ $0.displayName == peerID.displayName }).count > 0 {
+        if (browser.mcSession.connectedPeers as [MCPeerID]).filter({ $0 == peerID }).count > 0 {
             return browser.mcSession
         }
 

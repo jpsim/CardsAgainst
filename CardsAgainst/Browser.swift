@@ -27,7 +27,7 @@ class Browser: Session, MCNearbyServiceBrowserDelegate {
     }
 
     func browser(browser: MCNearbyServiceBrowser!, foundPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) {
-        if peerID.displayName != myPeerID.displayName {
+        if peerID != myPeerID {
             var runningTime = -timeStarted.timeIntervalSinceNow
             let context = NSData(bytes: &runningTime, length: sizeof(NSTimeInterval))
             browser.invitePeer(peerID, toSession: mcSession, withContext: context, timeout: 30)

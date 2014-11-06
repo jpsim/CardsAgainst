@@ -651,8 +651,8 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     func collectionView(collectionView: UICollectionView,
         didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        removeCardAtIndexPath(indexPath)
         addSelectedCardToBlackCard(whiteCards[indexPath.row])
+        removeCardAtIndexPath(indexPath)
     }
 
     // MARK: Paging
