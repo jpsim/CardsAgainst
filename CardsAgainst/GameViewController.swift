@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import PeerKit
 import MultipeerConnectivity
 
 typealias KVOContext = UInt8

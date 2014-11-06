@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PeerKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

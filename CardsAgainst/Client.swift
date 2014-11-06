@@ -9,21 +9,21 @@
 import Foundation
 import MultipeerConnectivity
 
-typealias PeerBlock = ((peerID: MCPeerID) -> Void)
-typealias EventBlock = ((peerID: MCPeerID, event: String, object: AnyObject?) -> Void)
-typealias ObjectBlock = ((peerID: MCPeerID, object: AnyObject?) -> Void)
+public typealias PeerBlock = ((peerID: MCPeerID) -> Void)
+public typealias EventBlock = ((peerID: MCPeerID, event: String, object: AnyObject?) -> Void)
+public typealias ObjectBlock = ((peerID: MCPeerID, object: AnyObject?) -> Void)
 
-class Client {
-    let transceiver = Transceiver()
-    var session: MCSession?
+public class Client {
+    public let transceiver = Transceiver()
+    public var session: MCSession?
 
-    var onConnect: PeerBlock?
-    var onDisconnect: PeerBlock?
-    var onEvent: EventBlock?
-    var onEventObject: ObjectBlock?
-    var eventBlocks = [String: ObjectBlock]()
+    public var onConnect: PeerBlock?
+    public var onDisconnect: PeerBlock?
+    public var onEvent: EventBlock?
+    public var onEventObject: ObjectBlock?
+    public var eventBlocks = [String: ObjectBlock]()
 
-    class var sharedInstance: Client {
+    public class var sharedInstance: Client {
         struct Static {
             static let instance: Client = Client()
         }
@@ -68,21 +68,21 @@ class Client {
 
     // MARK: Advertise/Browse
 
-    func transceive(serviceType: String, discoveryInfo: [String: String]? = nil) {
+    public func transceive(serviceType: String, discoveryInfo: [String: String]? = nil) {
         transceiver.startTransceiving(serviceType: serviceType, discoveryInfo: discoveryInfo)
     }
 
-    func advertise(serviceType: String, discoveryInfo: [String: String]? = nil) {
+    public func advertise(serviceType: String, discoveryInfo: [String: String]? = nil) {
         transceiver.startAdvertising(serviceType: serviceType, discoveryInfo: discoveryInfo)
     }
 
-    func browse(serviceType: String) {
+    public func browse(serviceType: String) {
         transceiver.startBrowsing(serviceType: serviceType)
     }
 
     // MARK: Events
 
-    class func sendEvent(event: String, object: AnyObject? = nil, toPeers peers: [MCPeerID]? = Client.sharedInstance.session?.connectedPeers as [MCPeerID]?) {
+    public class func sendEvent(event: String, object: AnyObject? = nil, toPeers peers: [MCPeerID]? = Client.sharedInstance.session?.connectedPeers as [MCPeerID]?) {
         if peers == nil {
             return
         }

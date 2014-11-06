@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PeerKit
 import MultipeerConnectivity
 
 protocol MPCSerializable {
