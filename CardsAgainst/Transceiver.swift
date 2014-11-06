@@ -9,8 +9,6 @@
 import Foundation
 import MultipeerConnectivity
 
-let myName = UIDevice.currentDevice().name
-
 enum TransceiverMode {
     case Browse, Advertise, Both
 }
@@ -54,27 +52,19 @@ public class Transceiver: SessionDelegate {
         return nil
     }
 
-    func publish(eventName: String, myPeerID: MCPeerID, peerID: MCPeerID, data: NSData? = nil) {
-        var payload = ["myPeerID": myPeerID, "peerID": peerID] as [String: AnyObject]
-        if let data = data {
-            payload["data"] = data
-        }
-        NSNotificationCenter.defaultCenter().postNotificationName(eventName, object: payload)
-    }
-
     public func connecting(myPeerID: MCPeerID, toPeer peer: MCPeerID) {
-        publish("connecting", myPeerID: myPeerID, peerID: peer)
+        // unsupported
     }
 
     public func connected(myPeerID: MCPeerID, toPeer peer: MCPeerID) {
-        publish("connected", myPeerID: myPeerID, peerID: peer)
+        didConnect(peer)
     }
 
     public func disconnected(myPeerID: MCPeerID, fromPeer peer: MCPeerID) {
-        publish("disconnected", myPeerID: myPeerID, peerID: peer)
+        didDisconnect(peer)
     }
 
     public func receivedData(myPeerID: MCPeerID, data: NSData, fromPeer peer: MCPeerID) {
-        publish("data", myPeerID: myPeerID, peerID: peer, data: data)
+        didReceiveData(data, fromPeer: peer)
     }
 }

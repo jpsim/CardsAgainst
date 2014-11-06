@@ -15,27 +15,61 @@ protocol MPCSerializable {
     init(mpcSerialized: NSData)
 }
 
-enum MessageType: String {
-    case EndGame = "EndGame",
-    NextCard = "NextCard",
+enum Event: String {
+    case StartGame = "StartGame",
+    Answer = "Answer",
     CancelAnswer = "CancelAnswer",
     Vote = "Vote",
-    Answer = "Answer",
-    StartGame = "StartGame"
+    NextCard = "NextCard",
+    EndGame = "EndGame"
 }
 
 struct ConnectionManager {
 
-    static var peers: [Player] {
-        if let session = Client.sharedInstance.session {
+    // MARK: Properties
+
+    static var peers: [MCPeerID] {
+        if let session = PeerKit.session {
+            return session.connectedPeers as [MCPeerID]
+        }
+        return [MCPeerID]()
+    }
+
+    static var otherPlayers: [Player] {
+        if let session = PeerKit.session {
             return (session.connectedPeers as [MCPeerID]).map { Player(peer: $0) }
         }
         return [Player]()
     }
 
-    static var allPlayers: [Player] { return [Player.getMe()] + ConnectionManager.peers }
+    static var allPlayers: [Player] { return [Player.getMe()] + ConnectionManager.otherPlayers }
 
-    static func sendMessage(type: MessageType, object: AnyObject? = nil, toPeers peers: [MCPeerID]? = Client.sharedInstance.session?.connectedPeers as [MCPeerID]?) {
-        Client.sendEvent(type.rawValue, object: object, toPeers: peers)
+    // MARK: Event Handling
+
+    static func onEvent(event: Event, run: ObjectBlock?) {
+        if let run = run {
+            PeerKit.eventBlocks[event.rawValue] = run
+        } else {
+            PeerKit.eventBlocks.removeValueForKey(event.rawValue)
+        }
+    }
+
+    // MARK: Sending
+
+    static func sendEvent(event: Event, object: [String: MPCSerializable]? = nil, toPeers peers: [MCPeerID]? = PeerKit.session?.connectedPeers as [MCPeerID]?) {
+        var anyObject: [String: NSData]?
+        if let object = object {
+            anyObject = [String: NSData]()
+            for (key, value) in object {
+                anyObject![key] = value.mpcSerialized
+            }
+        }
+        PeerKit.sendEvent(event.rawValue, object: anyObject, toPeers: peers)
+    }
+
+    static func sendEventForEach(event: Event, objectBlock: () -> ([String: MPCSerializable])) {
+        for peer in ConnectionManager.peers {
+            ConnectionManager.sendEvent(event, object: objectBlock(), toPeers: [peer])
+        }
     }
 }

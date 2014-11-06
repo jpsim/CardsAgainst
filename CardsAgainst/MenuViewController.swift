@@ -19,13 +19,13 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     private var separator = UIView()
     private var collectionView = UICollectionView(frame: CGRectZero,
         collectionViewLayout: UICollectionViewFlowLayout())
-    private var players: [Player] { return ConnectionManager.peers }
 
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // UI
         setupNavigationBar()
         setupLaunchImage()
         setupStartGameButton()
@@ -36,13 +36,13 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        Client.sharedInstance.onConnect = { _ in
+        PeerKit.onConnect = { _ in
             self.updatePlayers()
         }
-        Client.sharedInstance.onDisconnect = { _ in
+        PeerKit.onDisconnect = { _ in
             self.updatePlayers()
         }
-        Client.sharedInstance.eventBlocks[MessageType.StartGame.rawValue] = { _, object in
+        PeerKit.eventBlocks[Event.StartGame.rawValue] = { _, object in
             let dict = object as [String: NSData]
             let blackCard = Card(mpcSerialized: dict["blackCard"]!)
             let whiteCards = CardArray(mpcSerialized: dict["whiteCards"]!).array
@@ -51,9 +51,9 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     override func viewWillDisappear(animated: Bool) {
-        Client.sharedInstance.onConnect = nil
-        Client.sharedInstance.onDisconnect = nil
-        Client.sharedInstance.eventBlocks.removeValueForKey(MessageType.StartGame.rawValue)
+        PeerKit.onConnect = nil
+        PeerKit.onDisconnect = nil
+        PeerKit.eventBlocks.removeValueForKey(Event.StartGame.rawValue)
 
         super.viewWillDisappear(animated)
     }
@@ -138,23 +138,6 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         startGame(blackCard: blackCard, whiteCards: whiteCards)
     }
 
-    func sendBlackCard(blackCard: Card) {
-        for peer in Client.sharedInstance.session!.connectedPeers as [MCPeerID] {
-            let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
-            let whiteCardsArray = CardArray(array: whiteCards)
-            let object = [
-                "blackCard": blackCard.mpcSerialized,
-                "whiteCards": whiteCardsArray.mpcSerialized
-            ]
-            ConnectionManager.sendMessage(.StartGame, object: object, toPeers: [peer])
-        }
-    }
-
-    func startGame(notification: NSNotification) {
-        startGame(blackCard: fromNotification(notification),
-            whiteCards: fromNotification(notification).array)
-    }
-
     func startGame(#blackCard: Card, whiteCards: [Card]) {
         let gameVC = GameViewController(blackCard: blackCard, whiteCards: whiteCards)
         navigationController!.pushViewController(gameVC, animated: true)
@@ -162,20 +145,32 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Multipeer
 
+    func sendBlackCard(blackCard: Card) {
+        for peer in PeerKit.session!.connectedPeers as [MCPeerID] {
+            let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
+            let whiteCardsArray = CardArray(array: whiteCards)
+            let object: [String: MPCSerializable] = [
+                "blackCard": blackCard,
+                "whiteCards": whiteCardsArray
+            ]
+            ConnectionManager.sendEvent(.StartGame, object: object, toPeers: [peer])
+        }
+    }
+
     func updatePlayers() {
-        startGameButton.enabled = (players.count > 0)
+        startGameButton.enabled = (ConnectionManager.otherPlayers.count > 0)
         collectionView.reloadData()
     }
 
     // MARK: UICollectionViewDataSource
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ConnectionManager.peers.count
+        return ConnectionManager.otherPlayers.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PlayerCell.reuseID, forIndexPath: indexPath) as PlayerCell
-        cell.label.text = ConnectionManager.peers[indexPath.row].name
+        cell.label.text = ConnectionManager.otherPlayers[indexPath.row].name
         return cell
     }
 }

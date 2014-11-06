@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Window
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window!.backgroundColor = appBackgroundColor
         window!.rootViewController = UINavigationController(rootViewController: MenuViewController())
         window!.makeKeyAndVisible()
 
@@ -28,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: lightColor]
         window!.tintColor = appTintColor
 
-        Client.sharedInstance.transceive("cards-against")
+        // Simultaneously advertise and browse for other players
+        PeerKit.transceive("cards-against")
         return true
     }
 }

@@ -25,7 +25,7 @@ class PlayerCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupLabel() {
+    private func setupLabel() {
         // Label
         contentView.addSubview(label)
         label.setTranslatesAutoresizingMaskIntoConstraints(false)

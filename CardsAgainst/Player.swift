@@ -9,7 +9,7 @@
 import Foundation
 import MultipeerConnectivity
 
-let myName = UIDevice.currentDevice().name
+private let myName = UIDevice.currentDevice().name
 
 struct Player: Hashable, Equatable, MPCSerializable {
     let name: String

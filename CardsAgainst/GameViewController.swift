@@ -8,22 +8,11 @@
 
 import UIKit
 import Cartography
-import PeerKit
 import MultipeerConnectivity
 
 typealias KVOContext = UInt8
 var blackLabelBoundsKVOContext = KVOContext()
 let boundsKeyPath = "bounds"
-
-struct Vote {
-    let votee: Player
-    let voter: Player
-}
-
-struct Answer {
-    let sender: Player
-    let answer: NSAttributedString
-}
 
 final class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
 
@@ -55,7 +44,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     private let cellHeights = NSCache()
 
     private var voteeForCurrentPage: Player { return voteeForPage(pageControl.currentPage) }
-    private var hasEveryPeerAnswered: Bool { return answers.count == ConnectionManager.peers.count }
+    private var hasEveryPeerAnswered: Bool { return answers.count == ConnectionManager.otherPlayers.count }
     private var hasEveryPeerVoted: Bool { return self.votes.count == ConnectionManager.allPlayers.count }
     private var winner: Player? {
         if votes.count < 2 {
@@ -91,7 +80,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     }
     private var unansweredPlayers: [Player] {
         let answeredPlayers = answers.map { $0.sender }
-        return ConnectionManager.peers.filter { !contains(answeredPlayers, $0) }
+        return ConnectionManager.otherPlayers.filter { !contains(answeredPlayers, $0) }
     }
     private var waitingForPeersMessage: String {
         let names = (unansweredPlayers.map({$0.name}) as NSArray).componentsJoinedByString(", ")
@@ -151,45 +140,14 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             options: .New,
             context: &blackLabelBoundsKVOContext)
 
-        // Notifications
-        Client.sharedInstance.eventBlocks[MessageType.Answer.rawValue] = { peer, object in
-            let dict = object as [String: NSData]
-            let attr = MPCAttributedString(mpcSerialized: dict["answer"]!).attributedString
-            self.answers.append(Answer(sender: Player(peer: peer), answer: attr))
-            self.updateWaitingForPeers()
-            if self.gameState != .PickingCard && self.hasEveryPeerAnswered {
-                self.pickWinner()
-            }
-        }
-        Client.sharedInstance.eventBlocks[MessageType.CancelAnswer.rawValue] = { peer, object in
-            let sender = Player(peer: peer)
-            let previousCount = self.answers.count
-            self.answers = self.answers.filter { $0.sender != sender }
-            self.updateWaitingForPeers()
-        }
-        Client.sharedInstance.eventBlocks[MessageType.Vote.rawValue] = { peer, object in
-            let voter = Player(peer: peer)
-            let votee = Player(mpcSerialized: (object as [String: NSData])["votee"]!)
-            self.addVote(voter, to: votee)
-        }
-        Client.sharedInstance.eventBlocks[MessageType.NextCard.rawValue] = { _, object in
-            let dict = object as [String: NSData]
-            let winner = Player(mpcSerialized: dict["winner"]!)
-            let blackCard = Card(mpcSerialized: dict["blackCard"]!)
-            let whiteCards = CardArray(mpcSerialized: dict["whiteCards"]!).array
-            self.scores[winner]!++
-            self.nextBlackCard(blackCard, newWhiteCards: whiteCards, winner: winner)
-        }
-        Client.sharedInstance.eventBlocks[MessageType.EndGame.rawValue] = { _, _ in
-            self.dismiss()
-        }
+        setupMultipeerEventHandlers()
     }
 
     override func viewWillDisappear(animated: Bool) {
         blackCardLabel.removeObserver(self, forKeyPath: boundsKeyPath)
-        let observedMessageTypes: [MessageType] = [.Answer, .CancelAnswer, .Vote, .NextCard, .EndGame]
-        for type in observedMessageTypes {
-            Client.sharedInstance.eventBlocks.removeValueForKey(type.rawValue)
+        let observedEvents: [Event] = [.Answer, .CancelAnswer, .Vote, .NextCard, .EndGame]
+        for event in observedEvents {
+            ConnectionManager.onEvent(event, run: nil)
         }
 
         super.viewWillDisappear(animated)
@@ -234,7 +192,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         // Page Control
         pageControl.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(pageControl)
-        pageControl.numberOfPages = ConnectionManager.peers.count + 1
+        pageControl.numberOfPages = ConnectionManager.otherPlayers.count + 1
 
         // Layout
         layout(pageControl, voteButton) { pageControl, voteButton in
@@ -303,12 +261,57 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
+    // MARK: Multipeer
+
+    func setupMultipeerEventHandlers() {
+        // Answer
+        ConnectionManager.onEvent(.Answer) { peer, object in
+            let dict = object as [String: NSData]
+            let attr = MPCAttributedString(mpcSerialized: dict["answer"]!).attributedString
+            self.answers.append(Answer(sender: Player(peer: peer), answer: attr))
+            self.updateWaitingForPeers()
+            if self.gameState != .PickingCard && self.hasEveryPeerAnswered {
+                self.pickWinner()
+            }
+        }
+
+        // Cancel Answer
+        ConnectionManager.onEvent(.CancelAnswer) { peer, object in
+            let sender = Player(peer: peer)
+            let previousCount = self.answers.count
+            self.answers = self.answers.filter { $0.sender != sender }
+            self.updateWaitingForPeers()
+        }
+
+        // Vote
+        ConnectionManager.onEvent(.Vote) { peer, object in
+            let voter = Player(peer: peer)
+            let votee = Player(mpcSerialized: (object as [String: NSData])["votee"]!)
+            self.addVote(voter, to: votee)
+        }
+
+        // Next Card
+        ConnectionManager.onEvent(.NextCard) { _, object in
+            let dict = object as [String: NSData]
+            let winner = Player(mpcSerialized: dict["winner"]!)
+            let blackCard = Card(mpcSerialized: dict["blackCard"]!)
+            let whiteCards = CardArray(mpcSerialized: dict["whiteCards"]!).array
+            self.scores[winner]!++
+            self.nextBlackCard(blackCard, newWhiteCards: whiteCards, winner: winner)
+        }
+
+        // End Game
+        ConnectionManager.onEvent(.EndGame) { _, _ in
+            self.dismiss()
+        }
+    }
+
     // MARK: Actions
 
     override func didMoveToParentViewController(parent: UIViewController?) {
         // User initiated pop
         if parent == nil {
-            ConnectionManager.sendMessage(.EndGame)
+            ConnectionManager.sendEvent(.EndGame)
         }
     }
 
@@ -319,14 +322,14 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     func nextCardWithWinner(winner: Player) {
         let blackCard = CardManager.nextCardsWithType(.Black).first!
         scores[winner]!++
-        for peer in Client.sharedInstance.session!.connectedPeers as [MCPeerID] {
-            let nextWhiteCards = CardManager.nextCardsWithType(.White, count: 10 - whiteCards.count)
-            let payload = [
-                "blackCard": blackCard.mpcSerialized,
-                "whiteCards": CardArray(array: nextWhiteCards).mpcSerialized,
-                "winner": winner.mpcSerialized
+        ConnectionManager.sendEventForEach(.NextCard) {
+            let nextWhiteCards = CardManager.nextCardsWithType(.White, count: 10 - self.whiteCards.count)
+            let payload: [String: MPCSerializable] = [
+                "blackCard": blackCard,
+                "whiteCards": CardArray(array: nextWhiteCards),
+                "winner": winner
             ]
-            ConnectionManager.sendMessage(.NextCard, object: payload, toPeers: [peer])
+            return payload
         }
         let newWhiteCards = CardManager.nextCardsWithType(.White, count: 10 - whiteCards.count)
         nextBlackCard(blackCard, newWhiteCards: newWhiteCards, winner: winner)
@@ -403,7 +406,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
                 self.scrollViewContentView.layoutSubviews()
                 self.viewDidLayoutSubviews()
             }
-            ConnectionManager.sendMessage(.CancelAnswer)
+            ConnectionManager.sendEvent(.CancelAnswer)
         }
     }
 
@@ -414,7 +417,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         let votee = voteeForCurrentPage
         addVote(Player.getMe(), to: votee)
         hasVoted = true
-        ConnectionManager.sendMessage(.Vote, object: ["votee": votee.mpcSerialized])
+        ConnectionManager.sendEvent(.Vote, object: ["votee": votee])
 
         if hasEveryPeerVoted {
             if let winner = winner {
@@ -534,8 +537,8 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
                 self.view.bringSubviewToFront(self.voteButton)
             })
 
-            let attr = MPCAttributedString(attributedString: blackCardLabel.attributedText).mpcSerialized
-            ConnectionManager.sendMessage(.Answer, object: ["answer": attr])
+            let attr = MPCAttributedString(attributedString: blackCardLabel.attributedText)
+            ConnectionManager.sendEvent(.Answer, object: ["answer": attr])
             prepareForBlackCards()
         }
     }

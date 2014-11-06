@@ -10,17 +10,6 @@ import Foundation
 
 let blackCardPlaceholder = "________"
 
-func fromNotification(notification: NSNotification, type: CardType = .Black) -> Card {
-    let key = type == .White ? "whiteCard" : "blackCard"
-    return Card(mpcSerialized: notification.object![key] as NSData)
-}
-
-func fromNotification(notification: NSNotification, type: CardType = .White) -> CardArray {
-    let key = type == .White ? "whiteCards" : "blackCards"
-    let mpcSerialized = notification.object![key] as NSData
-    return CardArray(mpcSerialized: mpcSerialized)
-}
-
 enum CardType: String {
     case White = "A", Black = "Q"
 }
