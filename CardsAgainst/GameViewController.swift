@@ -297,7 +297,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     func updateVoteButton() {
         let cardString = voteeForCurrentPage.cardString(hasVoted)
-        let votesString = stringFromVoteCount(voteCountForPage(pageControl.currentPage))
+        let votesString = Vote.stringFromVoteCount(voteCountForPage(pageControl.currentPage))
         voteButton.setTitle("\(cardString) (\(votesString))", forState: .Normal)
     }
 
@@ -306,7 +306,9 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         scrollView.contentSize = CGSizeMake(view.frame.size.width * CGFloat(pageControl.numberOfPages), 0)
         for (index, answer) in enumerate(answers) {
             // Content View
-            let contentFrame = CGRectOffset(scrollViewContentView.frame, scrollViewContentView.frame.size.width * CGFloat(index + 1), 0)
+            let contentFrame = CGRectOffset(scrollViewContentView.frame,
+                scrollViewContentView.frame.size.width * CGFloat(index + 1),
+                0)
             let contentView = UIView(frame: contentFrame)
             scrollView.addSubview(contentView)
             otherBlackCardViews.append(contentView)
@@ -593,17 +595,6 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     // MARK: Logic
-
-    func stringFromVoteCount(voteCount: Int) -> String {
-        switch voteCount {
-        case 0:
-            return "no votes"
-        case 1:
-            return "1 vote"
-        default:
-            return "\(voteCount) votes"
-        }
-    }
 
     func voteCountForPage(page: Int) -> Int {
         let votee = voteeForPage(page)
