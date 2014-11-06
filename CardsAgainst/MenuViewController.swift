@@ -107,7 +107,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     func setupCollectionView() {
         // Collection View
         let cvLayout = collectionView.collectionViewLayout as UICollectionViewFlowLayout
-        cvLayout.itemSize = CGSizeMake(separator.frame.size.width, 40)
+        cvLayout.itemSize = CGSizeMake(separator.frame.size.width, 50)
         cvLayout.minimumLineSpacing = 0
         collectionView.dataSource = self
         collectionView.delegate = self

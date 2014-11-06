@@ -8,8 +8,11 @@
 
 import Foundation
 
+private let pg13 = true
+
 private let (blackCards, whiteCards) = ({
-    let jsonPath = NSBundle.mainBundle().pathForResource("cards", ofType: "json")
+    let resourceName = pg13 ? "cards_pg13" : "cards"
+    let jsonPath = NSBundle.mainBundle().pathForResource(resourceName, ofType: "json")
     let cards = NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: jsonPath!)!, options: nil, error: nil) as [[String: String]]
 
     var whiteCards = [Card]()
