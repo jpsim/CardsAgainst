@@ -1,0 +1,636 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E83611721A088404004EFC1D /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83611711A088404004EFC1D /* Browser.swift */; };
+		E83611771A088C40004EFC1D /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83611761A088C40004EFC1D /* Client.swift */; };
+		E8652A891A099AF50029BC21 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8652A881A099AF50029BC21 /* PlayerCell.swift */; };
+		E865F8761A07FF41001C5E11 /* WhiteCardFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865F8751A07FF41001C5E11 /* WhiteCardFlowLayout.swift */; };
+		E865F87B1A08016B001C5E11 /* WhiteCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E865F87A1A08016B001C5E11 /* WhiteCardCell.swift */; };
+		E86DCD141A075E16009BEC5A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DCD131A075E16009BEC5A /* Player.swift */; };
+		E86DCD191A0766C6009BEC5A /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DCD181A0766C6009BEC5A /* ConnectionManager.swift */; };
+		E86DCD1B1A0768F8009BEC5A /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DCD1A1A0768F8009BEC5A /* CardManager.swift */; };
+		E86DCD1D1A07692E009BEC5A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DCD1C1A07692E009BEC5A /* Card.swift */; };
+		E86DCD1F1A077833009BEC5A /* TouchableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DCD1E1A077833009BEC5A /* TouchableLabel.swift */; };
+		E86DCD211A078E72009BEC5A /* MPCAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DCD201A078E72009BEC5A /* MPCAttributedString.swift */; };
+		E8AF292F1A074F52004F4E73 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8AF29261A074F2D004F4E73 /* Cartography.framework */; };
+		E8AF29311A074F61004F4E73 /* Cartography.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E8AF29261A074F2D004F4E73 /* Cartography.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E8AF29331A0759B3004F4E73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF29321A0759B3004F4E73 /* GameViewController.swift */; };
+		E8AF29351A0759BC004F4E73 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF29341A0759BC004F4E73 /* GameState.swift */; };
+		E8C9BBA61A0807D80084813D /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E8C9BB941A0807D80084813D /* SVProgressHUD.bundle */; };
+		E8C9BBA71A0807D80084813D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E8C9BB961A0807D80084813D /* SVProgressHUD.m */; };
+		E8C9BBB41A0832AA0084813D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C9BBB31A0832AA0084813D /* Images.xcassets */; };
+		E8C9BBC11A08569B0084813D /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = E8C9BBC01A08569B0084813D /* cards.json */; };
+		E8C9BBD31A08756B0084813D /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C9BBD21A08756B0084813D /* Session.swift */; };
+		E8C9BBD51A0881720084813D /* Transceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C9BBD41A0881720084813D /* Transceiver.swift */; };
+		E8C9BBD71A0882900084813D /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C9BBD61A0882900084813D /* Advertiser.swift */; };
+		E8F188FB19FCA3EA001C5080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F188FA19FCA3EA001C5080 /* AppDelegate.swift */; };
+		E8F1891119FCA3EA001C5080 /* CardsAgainstTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1891019FCA3EA001C5080 /* CardsAgainstTests.swift */; };
+		E8F1891B19FCA524001C5080 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1891A19FCA524001C5080 /* Colors.swift */; };
+		E8FE921419FCA66700C4977B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FE921319FCA66700C4977B /* MenuViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E8AF29251A074F2D004F4E73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 54C96A11195063CD000CDD27;
+			remoteInfo = "Cartography-iOS";
+		};
+		E8AF29271A074F2D004F4E73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 54C96A1C195063CD000CDD27;
+			remoteInfo = "Cartography-iOS-Tests";
+		};
+		E8AF29291A074F2D004F4E73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 54F6A838195C20C100313D24;
+			remoteInfo = "Cartography-Mac";
+		};
+		E8AF292B1A074F2D004F4E73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 54F6A842195C20C200313D24;
+			remoteInfo = "Cartography-Mac-Tests";
+		};
+		E8AF292D1A074F4C004F4E73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 54C96A10195063CD000CDD27;
+			remoteInfo = "Cartography-iOS";
+		};
+		E8F1890B19FCA3EA001C5080 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8F188ED19FCA3EA001C5080 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8F188F419FCA3EA001C5080;
+			remoteInfo = CardsAgainst;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E8AF29301A074F56004F4E73 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E8AF29311A074F61004F4E73 /* Cartography.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E83611711A088404004EFC1D /* Browser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
+		E83611761A088C40004EFC1D /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		E8652A881A099AF50029BC21 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		E865F8751A07FF41001C5E11 /* WhiteCardFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteCardFlowLayout.swift; sourceTree = "<group>"; };
+		E865F87A1A08016B001C5E11 /* WhiteCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteCardCell.swift; sourceTree = "<group>"; };
+		E86DCD131A075E16009BEC5A /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E86DCD181A0766C6009BEC5A /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		E86DCD1A1A0768F8009BEC5A /* CardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
+		E86DCD1C1A07692E009BEC5A /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E86DCD1E1A077833009BEC5A /* TouchableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchableLabel.swift; sourceTree = "<group>"; };
+		E86DCD201A078E72009BEC5A /* MPCAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCAttributedString.swift; sourceTree = "<group>"; };
+		E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Cartography.xcodeproj; sourceTree = "<group>"; };
+		E8AF29321A0759B3004F4E73 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		E8AF29341A0759BC004F4E73 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		E8C9BB931A0807D80084813D /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		E8C9BB941A0807D80084813D /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		E8C9BB951A0807D80084813D /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		E8C9BB961A0807D80084813D /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		E8C9BBB21A08082F0084813D /* CardsAgainst-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CardsAgainst-Bridging-Header.h"; sourceTree = "<group>"; };
+		E8C9BBB31A0832AA0084813D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E8C9BBC01A08569B0084813D /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
+		E8C9BBD21A08756B0084813D /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		E8C9BBD41A0881720084813D /* Transceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transceiver.swift; sourceTree = "<group>"; };
+		E8C9BBD61A0882900084813D /* Advertiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
+		E8F188F519FCA3EA001C5080 /* CardsAgainst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardsAgainst.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8F188F919FCA3EA001C5080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8F188FA19FCA3EA001C5080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E8F1890A19FCA3EA001C5080 /* CardsAgainstTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardsAgainstTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8F1890F19FCA3EA001C5080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8F1891019FCA3EA001C5080 /* CardsAgainstTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsAgainstTests.swift; sourceTree = "<group>"; };
+		E8F1891A19FCA524001C5080 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E8FE921319FCA66700C4977B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E8F188F219FCA3EA001C5080 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8AF292F1A074F52004F4E73 /* Cartography.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8F1890719FCA3EA001C5080 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E8AF28E71A074F2D004F4E73 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				E8AF28E81A074F2D004F4E73 /* Cartography */,
+				E8C9BB7D1A0807D80084813D /* SVProgressHUD */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		E8AF28E81A074F2D004F4E73 /* Cartography */ = {
+			isa = PBXGroup;
+			children = (
+				E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */,
+			);
+			path = Cartography;
+			sourceTree = "<group>";
+		};
+		E8AF28FB1A074F2D004F4E73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8AF29261A074F2D004F4E73 /* Cartography.framework */,
+				E8AF29281A074F2D004F4E73 /* Cartography-iOS-Tests.xctest */,
+				E8AF292A1A074F2D004F4E73 /* Cartography.framework */,
+				E8AF292C1A074F2D004F4E73 /* Cartography-Mac-Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E8C9BB7D1A0807D80084813D /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E8C9BB921A0807D80084813D /* SVProgressHUD */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		E8C9BB921A0807D80084813D /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E8C9BB931A0807D80084813D /* SVProgressHUD-Prefix.pch */,
+				E8C9BB941A0807D80084813D /* SVProgressHUD.bundle */,
+				E8C9BB951A0807D80084813D /* SVProgressHUD.h */,
+				E8C9BB961A0807D80084813D /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		E8F188EC19FCA3EA001C5080 = {
+			isa = PBXGroup;
+			children = (
+				E8AF28E71A074F2D004F4E73 /* Vendor */,
+				E8F188F719FCA3EA001C5080 /* CardsAgainst */,
+				E8F1890D19FCA3EA001C5080 /* CardsAgainstTests */,
+				E8F188F619FCA3EA001C5080 /* Products */,
+				EDD4C142FEB0C43B2E6CE4F8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E8F188F619FCA3EA001C5080 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8F188F519FCA3EA001C5080 /* CardsAgainst.app */,
+				E8F1890A19FCA3EA001C5080 /* CardsAgainstTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E8F188F719FCA3EA001C5080 /* CardsAgainst */ = {
+			isa = PBXGroup;
+			children = (
+				E8C9BBC01A08569B0084813D /* cards.json */,
+				E8F1891A19FCA524001C5080 /* Colors.swift */,
+				E8F188FA19FCA3EA001C5080 /* AppDelegate.swift */,
+				E8FE921319FCA66700C4977B /* MenuViewController.swift */,
+				E8AF29321A0759B3004F4E73 /* GameViewController.swift */,
+				E8AF29341A0759BC004F4E73 /* GameState.swift */,
+				E86DCD131A075E16009BEC5A /* Player.swift */,
+				E86DCD181A0766C6009BEC5A /* ConnectionManager.swift */,
+				E86DCD1A1A0768F8009BEC5A /* CardManager.swift */,
+				E86DCD1C1A07692E009BEC5A /* Card.swift */,
+				E86DCD201A078E72009BEC5A /* MPCAttributedString.swift */,
+				E86DCD1E1A077833009BEC5A /* TouchableLabel.swift */,
+				E865F8751A07FF41001C5E11 /* WhiteCardFlowLayout.swift */,
+				E865F87A1A08016B001C5E11 /* WhiteCardCell.swift */,
+				E8652A881A099AF50029BC21 /* PlayerCell.swift */,
+				E8C9BBB31A0832AA0084813D /* Images.xcassets */,
+				E8F188F819FCA3EA001C5080 /* Supporting Files */,
+				E8C9BBD21A08756B0084813D /* Session.swift */,
+				E8C9BBD41A0881720084813D /* Transceiver.swift */,
+				E8C9BBD61A0882900084813D /* Advertiser.swift */,
+				E83611711A088404004EFC1D /* Browser.swift */,
+				E83611761A088C40004EFC1D /* Client.swift */,
+			);
+			path = CardsAgainst;
+			sourceTree = "<group>";
+		};
+		E8F188F819FCA3EA001C5080 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8C9BBB21A08082F0084813D /* CardsAgainst-Bridging-Header.h */,
+				E8F188F919FCA3EA001C5080 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E8F1890D19FCA3EA001C5080 /* CardsAgainstTests */ = {
+			isa = PBXGroup;
+			children = (
+				E8F1891019FCA3EA001C5080 /* CardsAgainstTests.swift */,
+				E8F1890E19FCA3EA001C5080 /* Supporting Files */,
+			);
+			path = CardsAgainstTests;
+			sourceTree = "<group>";
+		};
+		E8F1890E19FCA3EA001C5080 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8F1890F19FCA3EA001C5080 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EDD4C142FEB0C43B2E6CE4F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E8F188F419FCA3EA001C5080 /* CardsAgainst */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8F1891419FCA3EA001C5080 /* Build configuration list for PBXNativeTarget "CardsAgainst" */;
+			buildPhases = (
+				E8F188F119FCA3EA001C5080 /* Sources */,
+				E8F188F219FCA3EA001C5080 /* Frameworks */,
+				E8F188F319FCA3EA001C5080 /* Resources */,
+				E8AF29301A074F56004F4E73 /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8AF292E1A074F4C004F4E73 /* PBXTargetDependency */,
+			);
+			name = CardsAgainst;
+			productName = CardsAgainst;
+			productReference = E8F188F519FCA3EA001C5080 /* CardsAgainst.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E8F1890919FCA3EA001C5080 /* CardsAgainstTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8F1891719FCA3EA001C5080 /* Build configuration list for PBXNativeTarget "CardsAgainstTests" */;
+			buildPhases = (
+				E8F1890619FCA3EA001C5080 /* Sources */,
+				E8F1890719FCA3EA001C5080 /* Frameworks */,
+				E8F1890819FCA3EA001C5080 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8F1890C19FCA3EA001C5080 /* PBXTargetDependency */,
+			);
+			name = CardsAgainstTests;
+			productName = CardsAgainstTests;
+			productReference = E8F1890A19FCA3EA001C5080 /* CardsAgainstTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E8F188ED19FCA3EA001C5080 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "JP Simard";
+				TargetAttributes = {
+					E8F188F419FCA3EA001C5080 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					E8F1890919FCA3EA001C5080 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = E8F188F419FCA3EA001C5080;
+					};
+				};
+			};
+			buildConfigurationList = E8F188F019FCA3EA001C5080 /* Build configuration list for PBXProject "CardsAgainst" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E8F188EC19FCA3EA001C5080;
+			productRefGroup = E8F188F619FCA3EA001C5080 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E8AF28FB1A074F2D004F4E73 /* Products */;
+					ProjectRef = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				E8F188F419FCA3EA001C5080 /* CardsAgainst */,
+				E8F1890919FCA3EA001C5080 /* CardsAgainstTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E8AF29261A074F2D004F4E73 /* Cartography.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Cartography.framework;
+			remoteRef = E8AF29251A074F2D004F4E73 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8AF29281A074F2D004F4E73 /* Cartography-iOS-Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Cartography-iOS-Tests.xctest";
+			remoteRef = E8AF29271A074F2D004F4E73 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8AF292A1A074F2D004F4E73 /* Cartography.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Cartography.framework;
+			remoteRef = E8AF29291A074F2D004F4E73 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8AF292C1A074F2D004F4E73 /* Cartography-Mac-Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Cartography-Mac-Tests.xctest";
+			remoteRef = E8AF292B1A074F2D004F4E73 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E8F188F319FCA3EA001C5080 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8C9BBA61A0807D80084813D /* SVProgressHUD.bundle in Resources */,
+				E8C9BBC11A08569B0084813D /* cards.json in Resources */,
+				E8C9BBB41A0832AA0084813D /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8F1890819FCA3EA001C5080 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E8F188F119FCA3EA001C5080 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E86DCD1D1A07692E009BEC5A /* Card.swift in Sources */,
+				E83611721A088404004EFC1D /* Browser.swift in Sources */,
+				E8AF29331A0759B3004F4E73 /* GameViewController.swift in Sources */,
+				E8C9BBD71A0882900084813D /* Advertiser.swift in Sources */,
+				E86DCD1F1A077833009BEC5A /* TouchableLabel.swift in Sources */,
+				E86DCD1B1A0768F8009BEC5A /* CardManager.swift in Sources */,
+				E8F188FB19FCA3EA001C5080 /* AppDelegate.swift in Sources */,
+				E8C9BBA71A0807D80084813D /* SVProgressHUD.m in Sources */,
+				E865F8761A07FF41001C5E11 /* WhiteCardFlowLayout.swift in Sources */,
+				E8652A891A099AF50029BC21 /* PlayerCell.swift in Sources */,
+				E8AF29351A0759BC004F4E73 /* GameState.swift in Sources */,
+				E86DCD191A0766C6009BEC5A /* ConnectionManager.swift in Sources */,
+				E86DCD211A078E72009BEC5A /* MPCAttributedString.swift in Sources */,
+				E8C9BBD51A0881720084813D /* Transceiver.swift in Sources */,
+				E8F1891B19FCA524001C5080 /* Colors.swift in Sources */,
+				E8C9BBD31A08756B0084813D /* Session.swift in Sources */,
+				E865F87B1A08016B001C5E11 /* WhiteCardCell.swift in Sources */,
+				E86DCD141A075E16009BEC5A /* Player.swift in Sources */,
+				E83611771A088C40004EFC1D /* Client.swift in Sources */,
+				E8FE921419FCA66700C4977B /* MenuViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8F1890619FCA3EA001C5080 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8F1891119FCA3EA001C5080 /* CardsAgainstTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E8AF292E1A074F4C004F4E73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Cartography-iOS";
+			targetProxy = E8AF292D1A074F4C004F4E73 /* PBXContainerItemProxy */;
+		};
+		E8F1890C19FCA3EA001C5080 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8F188F419FCA3EA001C5080 /* CardsAgainst */;
+			targetProxy = E8F1890B19FCA3EA001C5080 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E8F1891219FCA3EA001C5080 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E8F1891319FCA3EA001C5080 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E8F1891519FCA3EA001C5080 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = CardsAgainst/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/CardsAgainst-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		E8F1891619FCA3EA001C5080 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = CardsAgainst/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/CardsAgainst-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		E8F1891819FCA3EA001C5080 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CardsAgainstTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardsAgainst.app/CardsAgainst";
+			};
+			name = Debug;
+		};
+		E8F1891919FCA3EA001C5080 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CardsAgainstTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardsAgainst.app/CardsAgainst";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E8F188F019FCA3EA001C5080 /* Build configuration list for PBXProject "CardsAgainst" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8F1891219FCA3EA001C5080 /* Debug */,
+				E8F1891319FCA3EA001C5080 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8F1891419FCA3EA001C5080 /* Build configuration list for PBXNativeTarget "CardsAgainst" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8F1891519FCA3EA001C5080 /* Debug */,
+				E8F1891619FCA3EA001C5080 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8F1891719FCA3EA001C5080 /* Build configuration list for PBXNativeTarget "CardsAgainstTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8F1891819FCA3EA001C5080 /* Debug */,
+				E8F1891919FCA3EA001C5080 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E8F188ED19FCA3EA001C5080 /* Project object */;
+}

@@ -1,0 +1,6 @@
+[submodule "Vendor/Cartography"]
+	path = Vendor/Cartography
+	url = git@github.com:robb/Cartography.git
+[submodule "Vendor/SVProgressHUD"]
+	path = Vendor/SVProgressHUD
+	url = git@github.com:TransitApp/SVProgressHUD.git
