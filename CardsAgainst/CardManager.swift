@@ -31,7 +31,7 @@ private let (blackCards, whiteCards) = ({
 
 private var (mWhiteCards, mBlackCards) = ([Card](), [Card]())
 
-public struct CardManager {
+struct CardManager {
     static func nextCardsWithType(type: CardType, count: UInt = 1) -> [Card] {
         let generator = Array(count: Int(count), repeatedValue: 0)
         if type == .Black {
@@ -41,7 +41,7 @@ public struct CardManager {
         }
     }
 
-    static func takeRandom<U>(inout mutable: [U], original: [U]) -> U {
+    private static func takeRandom<U>(inout mutable: [U], original: [U]) -> U {
         if mutable.count == 0 {
             // reshuffle
             mutable = original.sorted { _, _ in arc4random() % 2 == 0 }

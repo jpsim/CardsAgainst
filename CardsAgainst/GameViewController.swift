@@ -8,11 +8,10 @@
 
 import UIKit
 import Cartography
-import MultipeerConnectivity
 
-typealias KVOContext = UInt8
-var blackLabelBoundsKVOContext = KVOContext()
-let boundsKeyPath = "bounds"
+private typealias KVOContext = UInt8
+private var blackLabelBoundsKVOContext = KVOContext()
+private let boundsKeyPath = "bounds"
 
 final class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -167,7 +166,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: UI Setup
 
-    func setupVoteButton() {
+    private func setupVoteButton() {
         // Button
         voteButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(voteButton)
@@ -184,7 +183,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func setupPageControl() {
+    private func setupPageControl() {
         // Page Control
         pageControl.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(pageControl)
@@ -197,7 +196,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func setupScrollView() {
+    private func setupScrollView() {
         // Scroll View
         scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(scrollView)
@@ -217,7 +216,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         scrollView.addSubview(scrollViewContentView)
     }
 
-    func setupBlackCard() {
+    private func setupBlackCard() {
         // Label
         blackCardLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         scrollViewContentView.addSubview(blackCardLabel)
@@ -239,7 +238,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         blackCardLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "removeLastWhiteCard"))
     }
 
-    func setupWhiteCardCollectionView() {
+    private func setupWhiteCardCollectionView() {
         // Collection View
         whiteCardCollectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
         scrollViewContentView.addSubview(whiteCardCollectionView)
@@ -266,11 +265,11 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func updateTitle() {
+    private func updateTitle() {
         title = "Card \(++numberOfCardsPlayed)"
     }
 
-    func prepareForBlackCards() {
+    private func prepareForBlackCards() {
         scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 0)
         voteButton.enabled = false
         pageControl.alpha = 0
@@ -287,7 +286,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func updateWaitingForPeers() {
+    private func updateWaitingForPeers() {
         if unansweredPlayers.count > 0 {
             voteButton.setTitle(waitingForPeersMessage, forState: .Disabled)
         } else {
@@ -295,13 +294,13 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func updateVoteButton() {
+    private func updateVoteButton() {
         let cardString = voteeForCurrentPage.cardString(hasVoted)
         let votesString = Vote.stringFromVoteCount(voteCountForPage(pageControl.currentPage))
         voteButton.setTitle("\(cardString) (\(votesString))", forState: .Normal)
     }
 
-    func generateBlackCards() {
+    private func generateBlackCards() {
         pageControl.numberOfPages = answers.count + 1
         scrollView.contentSize = CGSizeMake(view.frame.size.width * CGFloat(pageControl.numberOfPages), 0)
         for (index, answer) in enumerate(answers) {
@@ -338,7 +337,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Multipeer
 
-    func setupMultipeerEventHandlers() {
+    private func setupMultipeerEventHandlers() {
         // Answer
         ConnectionManager.onEvent(.Answer) { peer, object in
             let dict = object as [String: NSData]
@@ -383,11 +382,11 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Actions
 
-    func dismiss() {
+    private func dismiss() {
         navigationController?.popViewControllerAnimated(true)
     }
 
-    func nextCardWithWinner(winner: Player) {
+    private func nextCardWithWinner(winner: Player) {
         let blackCard = CardManager.nextCardsWithType(.Black).first!
         scores[winner]!++
         ConnectionManager.sendEventForEach(.NextCard) {
@@ -403,7 +402,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         nextBlackCard(blackCard, newWhiteCards: newWhiteCards, winner: winner)
     }
 
-    func nextBlackCard(blackCard: Card, newWhiteCards: [Card], winner: Player) {
+    private func nextBlackCard(blackCard: Card, newWhiteCards: [Card], winner: Player) {
         showWinner(winner)
         answers = [Answer]()
         pageControl.currentPage = 0
@@ -438,15 +437,15 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: HUD
 
-    func showWinner(winner: Player) {
+    private func showWinner(winner: Player) {
         showHUD("\(winner.winningString())\n\n\(stats)", duration: 2)
     }
 
-    func showStats() {
+    private func showStats() {
         showHUD(stats)
     }
 
-    func showHUD(status: String, duration: Double = 1) {
+    private func showHUD(status: String, duration: Double = 1) {
         SVProgressHUD.showWithStatus(status, maskType: .Black)
         let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC)))
         dispatch_after(delay, dispatch_get_main_queue()) {
@@ -456,7 +455,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Voting
 
-    func vote() {
+    private func vote() {
         if hasVoted {
             return
         }
@@ -474,14 +473,14 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func addVote(from: Player, to: Player) {
+    private func addVote(from: Player, to: Player) {
         votes.append(Vote(votee: to, voter: from))
         if gameState != .PickingCard {
             scrollViewDidEndDecelerating(scrollView)
         }
     }
 
-    func handleTie() {
+    private func handleTie() {
         let alert = UIAlertController(title: "Tie Breaker!",
             message: "There was a tie! You picked last, so you decide who wins",
             preferredStyle: .Alert)
@@ -494,7 +493,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         presentViewController(alert, animated: true) {}
     }
 
-    func pickWinner() {
+    private func pickWinner() {
         if gameState != .WaitingForOthers {
             return
         }
@@ -511,7 +510,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Adding/Removing Cards
 
-    func addSelectedCardToBlackCard(selectedCard: Card) {
+    private func addSelectedCardToBlackCard(selectedCard: Card) {
         if let range = blackCardLabel.text?.rangeOfString(blackCardPlaceholder) {
             blackCardLabel.text = blackCardLabel.text?.stringByReplacingCharactersInRange(range, withString: selectedCard.content)
             let start = distance(blackCardLabel.text!.startIndex, range.startIndex)
@@ -546,7 +545,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func removeLastWhiteCard() {
+    private func removeLastWhiteCard() {
         if let lastRange = blackCardLabel.placeholderRanges.last {
             let blackCardLabelNSString = blackCardLabel.text! as NSString
             whiteCardCollectionView.performBatchUpdates({
@@ -584,7 +583,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func removeCardAtIndexPath(indexPath: NSIndexPath) {
+    private func removeCardAtIndexPath(indexPath: NSIndexPath) {
         if gameState == .PickingWinner {
             return
         }
@@ -596,12 +595,12 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Logic
 
-    func voteCountForPage(page: Int) -> Int {
+    private func voteCountForPage(page: Int) -> Int {
         let votee = voteeForPage(page)
         return votes.filter({ $0.votee.name == votee.name }).count
     }
 
-    func voteeForPage(page: Int) -> Player {
+    private func voteeForPage(page: Int) -> Player {
         if page > 0 {
             return answers[page - 1].sender
         } else {

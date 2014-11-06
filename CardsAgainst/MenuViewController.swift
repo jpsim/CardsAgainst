@@ -58,13 +58,13 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: UI
 
-    func setupNavigationBar() {
+    private func setupNavigationBar() {
         navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationController!.navigationBar.shadowImage = UIImage()
         navigationController!.navigationBar.translucent = true
     }
 
-    func setupLaunchImage() {
+    private func setupLaunchImage() {
         view.addSubview(UIImageView(image: UIImage.launchImage()))
 
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
@@ -72,7 +72,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         view.addSubview(blurView)
     }
 
-    func setupStartGameButton() {
+    private func setupStartGameButton() {
         // Button
         startGameButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         startGameButton.titleLabel!.font = startGameButton.titleLabel!.font.fontWithSize(25)
@@ -89,7 +89,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func setupSeparator() {
+    private func setupSeparator() {
         // Separator
         separator.setTranslatesAutoresizingMaskIntoConstraints(false)
         separator.backgroundColor = lightColor
@@ -104,7 +104,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
         // Collection View
         let cvLayout = collectionView.collectionViewLayout as UICollectionViewFlowLayout
         cvLayout.itemSize = CGSizeMake(separator.frame.size.width, 40)
@@ -129,21 +129,21 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Actions
 
-    func startGame() {
+    private func startGame() {
         let blackCard = CardManager.nextCardsWithType(.Black).first!
         let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
         sendBlackCard(blackCard)
         startGame(blackCard: blackCard, whiteCards: whiteCards)
     }
 
-    func startGame(#blackCard: Card, whiteCards: [Card]) {
+    private func startGame(#blackCard: Card, whiteCards: [Card]) {
         let gameVC = GameViewController(blackCard: blackCard, whiteCards: whiteCards)
         navigationController!.pushViewController(gameVC, animated: true)
     }
 
     // MARK: Multipeer
 
-    func sendBlackCard(blackCard: Card) {
+    private func sendBlackCard(blackCard: Card) {
         ConnectionManager.sendEventForEach(.StartGame) {
             let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
             let whiteCardsArray = CardArray(array: whiteCards)
@@ -151,7 +151,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    func updatePlayers() {
+    private func updatePlayers() {
         startGameButton.enabled = (ConnectionManager.otherPlayers.count > 0)
         collectionView.reloadData()
     }
