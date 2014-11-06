@@ -44,7 +44,21 @@ struct ConnectionManager {
 
     static var allPlayers: [Player] { return [Player.getMe()] + ConnectionManager.otherPlayers }
 
+    // MARK: Start
+
+    static func start() {
+        PeerKit.transceive("cards-against")
+    }
+
     // MARK: Event Handling
+
+    static func onConnect(run: PeerBlock?) {
+        PeerKit.onConnect = run
+    }
+
+    static func onDisconnect(run: PeerBlock?) {
+        PeerKit.onDisconnect = run
+    }
 
     static func onEvent(event: Event, run: ObjectBlock?) {
         if let run = run {

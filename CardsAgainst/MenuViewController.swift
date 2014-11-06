@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import PeerKit
-import MultipeerConnectivity
 import Cartography
 
 final class MenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -36,13 +34,13 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        PeerKit.onConnect = { _ in
+        ConnectionManager.onConnect { _ in
             self.updatePlayers()
         }
-        PeerKit.onDisconnect = { _ in
+        ConnectionManager.onDisconnect { _ in
             self.updatePlayers()
         }
-        PeerKit.eventBlocks[Event.StartGame.rawValue] = { _, object in
+        ConnectionManager.onEvent(.StartGame) { _, object in
             let dict = object as [String: NSData]
             let blackCard = Card(mpcSerialized: dict["blackCard"]!)
             let whiteCards = CardArray(mpcSerialized: dict["whiteCards"]!).array
@@ -51,9 +49,9 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     override func viewWillDisappear(animated: Bool) {
-        PeerKit.onConnect = nil
-        PeerKit.onDisconnect = nil
-        PeerKit.eventBlocks.removeValueForKey(Event.StartGame.rawValue)
+        ConnectionManager.onConnect(nil)
+        ConnectionManager.onDisconnect(nil)
+        ConnectionManager.onEvent(.StartGame, run: nil)
 
         super.viewWillDisappear(animated)
     }
@@ -146,14 +144,10 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: Multipeer
 
     func sendBlackCard(blackCard: Card) {
-        for peer in PeerKit.session!.connectedPeers as [MCPeerID] {
+        ConnectionManager.sendEventForEach(.StartGame) {
             let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
             let whiteCardsArray = CardArray(array: whiteCards)
-            let object: [String: MPCSerializable] = [
-                "blackCard": blackCard,
-                "whiteCards": whiteCardsArray
-            ]
-            ConnectionManager.sendEvent(.StartGame, object: object, toPeers: [peer])
+            return ["blackCard": blackCard, "whiteCards": whiteCardsArray]
         }
     }
 

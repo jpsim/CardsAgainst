@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PeerKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.tintColor = appTintColor
 
         // Simultaneously advertise and browse for other players
-        PeerKit.transceive("cards-against")
+        ConnectionManager.start()
         return true
     }
 }
