@@ -4,3 +4,6 @@
 [submodule "Vendor/SVProgressHUD"]
 	path = Vendor/SVProgressHUD
 	url = git@github.com:TransitApp/SVProgressHUD.git
+[submodule "Vendor/PeerKit"]
+	path = Vendor/PeerKit
+	url = git@github.com:jpsim/PeerKit.git

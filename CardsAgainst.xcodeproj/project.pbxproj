@@ -7,16 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E82FC16E1A0B518800516EE5 /* PeerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E82FC16D1A0B518800516EE5 /* PeerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E82FC1741A0B518800516EE5 /* PeerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E82FC1691A0B518800516EE5 /* PeerKit.framework */; };
-		E82FC17D1A0B518800516EE5 /* PeerKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82FC17C1A0B518800516EE5 /* PeerKitTests.swift */; };
-		E82FC1801A0B518800516EE5 /* PeerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E82FC1691A0B518800516EE5 /* PeerKit.framework */; };
-		E82FC1811A0B518800516EE5 /* PeerKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E82FC1691A0B518800516EE5 /* PeerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E82FC1881A0B519C00516EE5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C9BBD21A08756B0084813D /* Session.swift */; };
-		E82FC1891A0B519C00516EE5 /* Transceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C9BBD41A0881720084813D /* Transceiver.swift */; };
-		E82FC18A1A0B519C00516EE5 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C9BBD61A0882900084813D /* Advertiser.swift */; };
-		E82FC18B1A0B519C00516EE5 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83611711A088404004EFC1D /* Browser.swift */; };
-		E82FC18E1A0B53A200516EE5 /* PeerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82FC18D1A0B53A200516EE5 /* PeerKit.swift */; };
 		E82FC1901A0B57B600516EE5 /* UIImage+LaunchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82FC18F1A0B57B600516EE5 /* UIImage+LaunchImage.swift */; };
 		E852ACA51A0C3B5800AFA58D /* cards_pg13.json in Resources */ = {isa = PBXBuildFile; fileRef = E852ACA41A0C3B5800AFA58D /* cards_pg13.json */; };
 		E8652A891A099AF50029BC21 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8652A881A099AF50029BC21 /* PlayerCell.swift */; };
@@ -41,31 +31,12 @@
 		E8F188FB19FCA3EA001C5080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F188FA19FCA3EA001C5080 /* AppDelegate.swift */; };
 		E8F1891119FCA3EA001C5080 /* CardsAgainstTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1891019FCA3EA001C5080 /* CardsAgainstTests.swift */; };
 		E8F1891B19FCA524001C5080 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1891A19FCA524001C5080 /* Colors.swift */; };
+		E8F805E71A0C3EA300D95CC3 /* PeerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8F805E21A0C3E8700D95CC3 /* PeerKit.framework */; };
+		E8F805E81A0C3EA700D95CC3 /* PeerKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E8F805E21A0C3E8700D95CC3 /* PeerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8FE921419FCA66700C4977B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FE921319FCA66700C4977B /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E82FC1751A0B518800516EE5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E8F188ED19FCA3EA001C5080 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E82FC1681A0B518800516EE5;
-			remoteInfo = PeerKit;
-		};
-		E82FC1771A0B518800516EE5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E8F188ED19FCA3EA001C5080 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E8F188F419FCA3EA001C5080;
-			remoteInfo = CardsAgainst;
-		};
-		E82FC17E1A0B518800516EE5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E8F188ED19FCA3EA001C5080 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E82FC1681A0B518800516EE5;
-			remoteInfo = PeerKit;
-		};
 		E8AF29251A074F2D004F4E73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
@@ -108,6 +79,27 @@
 			remoteGlobalIDString = E8F188F419FCA3EA001C5080;
 			remoteInfo = CardsAgainst;
 		};
+		E8F805E11A0C3E8700D95CC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E89FD6C01A0C3CDC00C2FEF7;
+			remoteInfo = PeerKit;
+		};
+		E8F805E31A0C3E8700D95CC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E89FD6CB1A0C3CDC00C2FEF7;
+			remoteInfo = PeerKitTests;
+		};
+		E8F805E51A0C3E9E00D95CC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E89FD6BF1A0C3CDC00C2FEF7;
+			remoteInfo = PeerKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,8 +109,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E8F805E81A0C3EA700D95CC3 /* PeerKit.framework in Copy Frameworks */,
 				E8AF29311A074F61004F4E73 /* Cartography.framework in Copy Frameworks */,
-				E82FC1811A0B518800516EE5 /* PeerKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,15 +118,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E82FC1691A0B518800516EE5 /* PeerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PeerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E82FC16C1A0B518800516EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E82FC16D1A0B518800516EE5 /* PeerKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeerKit.h; sourceTree = "<group>"; };
-		E82FC1731A0B518800516EE5 /* PeerKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeerKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E82FC17B1A0B518800516EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E82FC17C1A0B518800516EE5 /* PeerKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerKitTests.swift; sourceTree = "<group>"; };
-		E82FC18D1A0B53A200516EE5 /* PeerKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerKit.swift; sourceTree = "<group>"; };
 		E82FC18F1A0B57B600516EE5 /* UIImage+LaunchImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+LaunchImage.swift"; sourceTree = "<group>"; };
-		E83611711A088404004EFC1D /* Browser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Browser.swift; path = ../CardsAgainst/Browser.swift; sourceTree = "<group>"; };
 		E852ACA41A0C3B5800AFA58D /* cards_pg13.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards_pg13.json; sourceTree = "<group>"; };
 		E8652A881A099AF50029BC21 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		E865F8751A07FF41001C5E11 /* WhiteCardFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteCardFlowLayout.swift; sourceTree = "<group>"; };
@@ -155,9 +139,6 @@
 		E8C9BBB21A08082F0084813D /* CardsAgainst-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CardsAgainst-Bridging-Header.h"; sourceTree = "<group>"; };
 		E8C9BBB31A0832AA0084813D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E8C9BBC01A08569B0084813D /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
-		E8C9BBD21A08756B0084813D /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = ../CardsAgainst/Session.swift; sourceTree = "<group>"; };
-		E8C9BBD41A0881720084813D /* Transceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transceiver.swift; path = ../CardsAgainst/Transceiver.swift; sourceTree = "<group>"; };
-		E8C9BBD61A0882900084813D /* Advertiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Advertiser.swift; path = ../CardsAgainst/Advertiser.swift; sourceTree = "<group>"; };
 		E8D6D1E31A0B665D00CDF953 /* Vote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		E8D6D1E81A0B667000CDF953 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		E8F188F519FCA3EA001C5080 /* CardsAgainst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardsAgainst.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,31 +148,17 @@
 		E8F1890F19FCA3EA001C5080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8F1891019FCA3EA001C5080 /* CardsAgainstTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsAgainstTests.swift; sourceTree = "<group>"; };
 		E8F1891A19FCA524001C5080 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PeerKit.xcodeproj; sourceTree = "<group>"; };
 		E8FE921319FCA66700C4977B /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E82FC1651A0B518800516EE5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E82FC1701A0B518800516EE5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E82FC1741A0B518800516EE5 /* PeerKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E8F188F219FCA3EA001C5080 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8F805E71A0C3EA300D95CC3 /* PeerKit.framework in Frameworks */,
 				E8AF292F1A074F52004F4E73 /* Cartography.framework in Frameworks */,
-				E82FC1801A0B518800516EE5 /* PeerKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,45 +172,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E82FC16A1A0B518800516EE5 /* PeerKit */ = {
-			isa = PBXGroup;
-			children = (
-				E82FC16D1A0B518800516EE5 /* PeerKit.h */,
-				E8C9BBD21A08756B0084813D /* Session.swift */,
-				E8C9BBD41A0881720084813D /* Transceiver.swift */,
-				E8C9BBD61A0882900084813D /* Advertiser.swift */,
-				E83611711A088404004EFC1D /* Browser.swift */,
-				E82FC18D1A0B53A200516EE5 /* PeerKit.swift */,
-				E82FC16B1A0B518800516EE5 /* Supporting Files */,
-			);
-			path = PeerKit;
-			sourceTree = "<group>";
-		};
-		E82FC16B1A0B518800516EE5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E82FC16C1A0B518800516EE5 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E82FC1791A0B518800516EE5 /* PeerKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				E82FC17C1A0B518800516EE5 /* PeerKitTests.swift */,
-				E82FC17A1A0B518800516EE5 /* Supporting Files */,
-			);
-			path = PeerKitTests;
-			sourceTree = "<group>";
-		};
-		E82FC17A1A0B518800516EE5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E82FC17B1A0B518800516EE5 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		E85797001A0B5E520055EFBD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				E8AF28E81A074F2D004F4E73 /* Cartography */,
+				E8F805C11A0C3E8700D95CC3 /* PeerKit */,
 				E8C9BB7D1A0807D80084813D /* SVProgressHUD */,
 			);
 			path = Vendor;
@@ -365,8 +294,6 @@
 				E8AF28E71A074F2D004F4E73 /* Vendor */,
 				E8F188F719FCA3EA001C5080 /* CardsAgainst */,
 				E8F1890D19FCA3EA001C5080 /* CardsAgainstTests */,
-				E82FC16A1A0B518800516EE5 /* PeerKit */,
-				E82FC1791A0B518800516EE5 /* PeerKitTests */,
 				E8F188F619FCA3EA001C5080 /* Products */,
 				EDD4C142FEB0C43B2E6CE4F8 /* Frameworks */,
 			);
@@ -377,8 +304,6 @@
 			children = (
 				E8F188F519FCA3EA001C5080 /* CardsAgainst.app */,
 				E8F1890A19FCA3EA001C5080 /* CardsAgainstTests.xctest */,
-				E82FC1691A0B518800516EE5 /* PeerKit.framework */,
-				E82FC1731A0B518800516EE5 /* PeerKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -425,6 +350,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E8F805C11A0C3E8700D95CC3 /* PeerKit */ = {
+			isa = PBXGroup;
+			children = (
+				E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */,
+			);
+			path = PeerKit;
+			sourceTree = "<group>";
+		};
+		E8F805CC1A0C3E8700D95CC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8F805E21A0C3E8700D95CC3 /* PeerKit.framework */,
+				E8F805E41A0C3E8700D95CC3 /* PeerKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EDD4C142FEB0C43B2E6CE4F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,55 +376,7 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		E82FC1661A0B518800516EE5 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E82FC16E1A0B518800516EE5 /* PeerKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		E82FC1681A0B518800516EE5 /* PeerKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E82FC1821A0B518800516EE5 /* Build configuration list for PBXNativeTarget "PeerKit" */;
-			buildPhases = (
-				E82FC1641A0B518800516EE5 /* Sources */,
-				E82FC1651A0B518800516EE5 /* Frameworks */,
-				E82FC1661A0B518800516EE5 /* Headers */,
-				E82FC1671A0B518800516EE5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PeerKit;
-			productName = PeerKit;
-			productReference = E82FC1691A0B518800516EE5 /* PeerKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E82FC1721A0B518800516EE5 /* PeerKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E82FC1851A0B518800516EE5 /* Build configuration list for PBXNativeTarget "PeerKitTests" */;
-			buildPhases = (
-				E82FC16F1A0B518800516EE5 /* Sources */,
-				E82FC1701A0B518800516EE5 /* Frameworks */,
-				E82FC1711A0B518800516EE5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E82FC1761A0B518800516EE5 /* PBXTargetDependency */,
-				E82FC1781A0B518800516EE5 /* PBXTargetDependency */,
-			);
-			name = PeerKitTests;
-			productName = PeerKitTests;
-			productReference = E82FC1731A0B518800516EE5 /* PeerKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		E8F188F419FCA3EA001C5080 /* CardsAgainst */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8F1891419FCA3EA001C5080 /* Build configuration list for PBXNativeTarget "CardsAgainst" */;
@@ -495,8 +389,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				E8F805E61A0C3E9E00D95CC3 /* PBXTargetDependency */,
 				E8AF292E1A074F4C004F4E73 /* PBXTargetDependency */,
-				E82FC17F1A0B518800516EE5 /* PBXTargetDependency */,
 			);
 			name = CardsAgainst;
 			productName = CardsAgainst;
@@ -530,13 +424,6 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "JP Simard";
 				TargetAttributes = {
-					E82FC1681A0B518800516EE5 = {
-						CreatedOnToolsVersion = 6.1;
-					};
-					E82FC1721A0B518800516EE5 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = E8F188F419FCA3EA001C5080;
-					};
 					E8F188F419FCA3EA001C5080 = {
 						CreatedOnToolsVersion = 6.1;
 					};
@@ -562,13 +449,15 @@
 					ProductGroup = E8AF28FB1A074F2D004F4E73 /* Products */;
 					ProjectRef = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
 				},
+				{
+					ProductGroup = E8F805CC1A0C3E8700D95CC3 /* Products */;
+					ProjectRef = E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
 				E8F188F419FCA3EA001C5080 /* CardsAgainst */,
 				E8F1890919FCA3EA001C5080 /* CardsAgainstTests */,
-				E82FC1681A0B518800516EE5 /* PeerKit */,
-				E82FC1721A0B518800516EE5 /* PeerKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -602,23 +491,23 @@
 			remoteRef = E8AF292B1A074F2D004F4E73 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		E8F805E21A0C3E8700D95CC3 /* PeerKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PeerKit.framework;
+			remoteRef = E8F805E11A0C3E8700D95CC3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8F805E41A0C3E8700D95CC3 /* PeerKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PeerKitTests.xctest;
+			remoteRef = E8F805E31A0C3E8700D95CC3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E82FC1671A0B518800516EE5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E82FC1711A0B518800516EE5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E8F188F319FCA3EA001C5080 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -640,26 +529,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E82FC1641A0B518800516EE5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E82FC18B1A0B519C00516EE5 /* Browser.swift in Sources */,
-				E82FC1891A0B519C00516EE5 /* Transceiver.swift in Sources */,
-				E82FC1881A0B519C00516EE5 /* Session.swift in Sources */,
-				E82FC18E1A0B53A200516EE5 /* PeerKit.swift in Sources */,
-				E82FC18A1A0B519C00516EE5 /* Advertiser.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E82FC16F1A0B518800516EE5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E82FC17D1A0B518800516EE5 /* PeerKitTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E8F188F119FCA3EA001C5080 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -696,21 +565,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E82FC1761A0B518800516EE5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E82FC1681A0B518800516EE5 /* PeerKit */;
-			targetProxy = E82FC1751A0B518800516EE5 /* PBXContainerItemProxy */;
-		};
-		E82FC1781A0B518800516EE5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E8F188F419FCA3EA001C5080 /* CardsAgainst */;
-			targetProxy = E82FC1771A0B518800516EE5 /* PBXContainerItemProxy */;
-		};
-		E82FC17F1A0B518800516EE5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E82FC1681A0B518800516EE5 /* PeerKit */;
-			targetProxy = E82FC17E1A0B518800516EE5 /* PBXContainerItemProxy */;
-		};
 		E8AF292E1A074F4C004F4E73 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Cartography-iOS";
@@ -721,83 +575,14 @@
 			target = E8F188F419FCA3EA001C5080 /* CardsAgainst */;
 			targetProxy = E8F1890B19FCA3EA001C5080 /* PBXContainerItemProxy */;
 		};
+		E8F805E61A0C3E9E00D95CC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PeerKit;
+			targetProxy = E8F805E51A0C3E9E00D95CC3 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		E82FC1831A0B518800516EE5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PeerKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E82FC1841A0B518800516EE5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PeerKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E82FC1861A0B518800516EE5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PeerKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardsAgainst.app/CardsAgainst";
-			};
-			name = Debug;
-		};
-		E82FC1871A0B518800516EE5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PeerKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardsAgainst.app/CardsAgainst";
-			};
-			name = Release;
-		};
 		E8F1891219FCA3EA001C5080 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -938,24 +723,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E82FC1821A0B518800516EE5 /* Build configuration list for PBXNativeTarget "PeerKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E82FC1831A0B518800516EE5 /* Debug */,
-				E82FC1841A0B518800516EE5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E82FC1851A0B518800516EE5 /* Build configuration list for PBXNativeTarget "PeerKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E82FC1861A0B518800516EE5 /* Debug */,
-				E82FC1871A0B518800516EE5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E8F188F019FCA3EA001C5080 /* Build configuration list for PBXProject "CardsAgainst" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
