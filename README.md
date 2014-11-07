@@ -14,11 +14,17 @@ This project uses the following libraries:
 * [Cartography](https://github.com/robb/Cartography) for layout
 * [SVProgressHUD](https://github.com/TransitApp/SVProgressHUD) for HUDs
 
+## Offensive Content
+
+Running this game from source will use a small, very mild, impossible to offend subset of the Cards Against Humanity cards.
+
+However, simply set `let pg13 = false` in [CardManager.swift](https://github.com/jpsim/CardsAgainst/blob/master/CardsAgainst/CardManager.swift#L11) to gain access to the entirety of the card collection.
+
 ## License
 
 This project is under the MIT license.
 
-Thanks to [Cards Against Humanity][cah] for this great CC-BY-NC-SA 2.0 game!
+Thanks to [Cards Against Humanity][cah] for this great CC-BY-NC-SA 2.0 game! This project is unaffiliated with the good people behind Cards Against Humanity. You should buy their game!
 
 Thanks to [Hangouts Against Humanity](https://github.com/samurailink3/hangouts-against-humanity) for the cards!
 
