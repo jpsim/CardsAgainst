@@ -178,7 +178,7 @@
 				E8FE921319FCA66700C4977B /* MenuViewController.swift */,
 				E8AF29321A0759B3004F4E73 /* GameViewController.swift */,
 			);
-			name = "View Controllers";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		E85797011A0B5E5E0055EFBD /* Assets */ = {
@@ -188,7 +188,7 @@
 				E8C9BBC01A08569B0084813D /* cards.json */,
 				E852ACA41A0C3B5800AFA58D /* cards_pg13.json */,
 			);
-			name = Assets;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		E85797021A0B5E780055EFBD /* Views */ = {
@@ -198,7 +198,7 @@
 				E865F87A1A08016B001C5E11 /* WhiteCardCell.swift */,
 				E8652A881A099AF50029BC21 /* PlayerCell.swift */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E85797031A0B5E850055EFBD /* Models */ = {
@@ -211,7 +211,7 @@
 				E8D6D1E31A0B665D00CDF953 /* Vote.swift */,
 				E8D6D1E81A0B667000CDF953 /* Answer.swift */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E85797041A0B5E930055EFBD /* Controllers */ = {
@@ -221,7 +221,7 @@
 				E86DCD181A0766C6009BEC5A /* ConnectionManager.swift */,
 				E86DCD1A1A0768F8009BEC5A /* CardManager.swift */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		E85797051A0B5EA40055EFBD /* Extensions */ = {
@@ -229,7 +229,7 @@
 			children = (
 				E82FC18F1A0B57B600516EE5 /* UIImage+LaunchImage.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E85797061A0B5EBB0055EFBD /* Helpers */ = {
@@ -237,7 +237,7 @@
 			children = (
 				E8F1891A19FCA524001C5080 /* Colors.swift */,
 			);
-			name = Helpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E8AF28E71A074F2D004F4E73 /* Vendor */ = {
@@ -295,7 +295,6 @@
 				E8F188F719FCA3EA001C5080 /* CardsAgainst */,
 				E8F1890D19FCA3EA001C5080 /* CardsAgainstTests */,
 				E8F188F619FCA3EA001C5080 /* Products */,
-				EDD4C142FEB0C43B2E6CE4F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -330,7 +329,7 @@
 				E8C9BBB21A08082F0084813D /* CardsAgainst-Bridging-Header.h */,
 				E8F188F919FCA3EA001C5080 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		E8F1890D19FCA3EA001C5080 /* CardsAgainstTests */ = {
@@ -347,7 +346,7 @@
 			children = (
 				E8F1890F19FCA3EA001C5080 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		E8F805C11A0C3E8700D95CC3 /* PeerKit */ = {
@@ -365,13 +364,6 @@
 				E8F805E41A0C3E8700D95CC3 /* PeerKitTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		EDD4C142FEB0C43B2E6CE4F8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -665,11 +657,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				INFOPLIST_FILE = CardsAgainst/Info.plist;
+				INFOPLIST_FILE = "CardsAgainst/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/CardsAgainst-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/Supporting Files/CardsAgainst-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -678,11 +670,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				INFOPLIST_FILE = CardsAgainst/Info.plist;
+				INFOPLIST_FILE = "CardsAgainst/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/CardsAgainst-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/Supporting Files/CardsAgainst-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -698,7 +690,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CardsAgainstTests/Info.plist;
+				INFOPLIST_FILE = "CardsAgainstTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardsAgainst.app/CardsAgainst";
@@ -713,7 +705,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = CardsAgainstTests/Info.plist;
+				INFOPLIST_FILE = "CardsAgainstTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardsAgainst.app/CardsAgainst";
