@@ -18,7 +18,7 @@ This project uses the following libraries:
 
 Running this game from source will use a small, very mild, impossible to offend subset of the Cards Against Humanity cards.
 
-However, simply set `let pg13 = false` in [CardManager.swift](https://github.com/jpsim/CardsAgainst/blob/master/CardsAgainst/CardManager.swift#L11) to gain access to the entirety of the card collection.
+However, simply set `let pg13 = false` in [CardManager.swift](https://github.com/jpsim/CardsAgainst/blob/master/CardsAgainst/Controllers/CardManager.swift#L11) to gain access to the entirety of the card collection.
 
 ## License
 
