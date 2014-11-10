@@ -26,8 +26,12 @@ extension UIImage {
         case 736:
             // 5.5 inch screen
             launchImageName = "LaunchImage-800-Portrait-736h"
+        case 1024:
+            // iPads, ev'ry last one of 'em
+            launchImageName = "LaunchImage-700-Portrait@2x~ipad"
         default:
             // Let the system decide
+            // @note: Won't ever work; see http://stackoverflow.com/questions/19107543/xcode-5-asset-catalog-how-to-reference-the-launchimage
             launchImageName = "LaunchImage"
         }
         return UIImage(named: launchImageName)!
