@@ -134,7 +134,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
         // Other setup
         blackCardLabel.text = blackCard.content
-        blackCardLabel.font = UIFont.boldSystemFontOfSize(35)
+        blackCardLabel.font = UIFont.blackCardFont
         whiteCardCollectionView.reloadData()
 
         for player in ConnectionManager.allPlayers {
@@ -173,6 +173,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         voteButton.enabled = false
         voteButton.titleLabel?.numberOfLines = 0
         voteButton.titleLabel?.textAlignment = .Center
+        voteButton.titleLabel?.font = UIFont.voteButtonFont
         voteButton.addTarget(self, action: "vote", forControlEvents: .TouchUpInside)
 
         // Layout
@@ -322,8 +323,8 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             blackCardLabel.minimumScaleFactor = 0.5
             blackCardLabel.adjustsFontSizeToFitWidth = true
 
-            blackCardLabel.font = self.blackCardLabel.font
             blackCardLabel.attributedText = answer.answer
+            blackCardLabel.font = self.blackCardLabel.font // override remote font size with our own screen-specific size
 
             // Layout
             layout(blackCardLabel, contentView) { blackCardLabel, contentView in
@@ -416,7 +417,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         view.sendSubviewToBack(pageControl)
 
         blackCardLabel.text = blackCard.content
-        blackCardLabel.font = UIFont.boldSystemFontOfSize(35)
+        blackCardLabel.font = UIFont.blackCardFont
         whiteCards += newWhiteCards
         whiteCardCollectionView.reloadData()
         whiteCardCollectionView.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: false)
@@ -528,7 +529,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         blackCardLabel.attributedText = blackCardStyled
         if blackCardLabel.text?.rangeOfString(blackCardPlaceholder) == nil {
             gameState = .WaitingForOthers
-            blackCardLabel.font = UIFont.boldSystemFontOfSize(35)
+            blackCardLabel.font = UIFont.blackCardFont
             blackCardLabelBottomConstraint.constant = -80
             UIView.animateWithDuration(0.33, {
                 self.whiteCardCollectionView.alpha = 0
@@ -569,7 +570,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             }
             blackCardLabel.attributedText = blackCardStyled
             gameState = .PickingCard
-            blackCardLabel.font = UIFont.boldSystemFontOfSize(35)
+            blackCardLabel.font = UIFont.blackCardFont
             view.sendSubviewToBack(voteButton)
             view.sendSubviewToBack(pageControl)
             blackCardLabelBottomConstraint.constant = -200

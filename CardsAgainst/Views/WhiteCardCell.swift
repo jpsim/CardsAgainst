@@ -45,7 +45,7 @@ final class WhiteCardCell: UICollectionViewCell {
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         label.numberOfLines = 0
         label.lineBreakMode = .ByWordWrapping
-        label.font = UIFont.boldSystemFontOfSize(20)
+        label.font = UIFont.whiteCardFont
 
         // Layout
         layout(label) { label in
