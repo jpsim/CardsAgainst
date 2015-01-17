@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4CD0B9E1A2D3AD7003B83B4 /* UIFont+CardsAgainst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CD0B9D1A2D3AD7003B83B4 /* UIFont+CardsAgainst.swift */; };
 		E82FC1901A0B57B600516EE5 /* UIImage+LaunchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82FC18F1A0B57B600516EE5 /* UIImage+LaunchImage.swift */; };
 		E852ACA51A0C3B5800AFA58D /* cards_pg13.json in Resources */ = {isa = PBXBuildFile; fileRef = E852ACA41A0C3B5800AFA58D /* cards_pg13.json */; };
 		E8652A891A099AF50029BC21 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8652A881A099AF50029BC21 /* PlayerCell.swift */; };
@@ -118,6 +119,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D4CD0B9D1A2D3AD7003B83B4 /* UIFont+CardsAgainst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+CardsAgainst.swift"; sourceTree = "<group>"; };
 		E82FC18F1A0B57B600516EE5 /* UIImage+LaunchImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+LaunchImage.swift"; sourceTree = "<group>"; };
 		E852ACA41A0C3B5800AFA58D /* cards_pg13.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards_pg13.json; sourceTree = "<group>"; };
 		E8652A881A099AF50029BC21 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				E82FC18F1A0B57B600516EE5 /* UIImage+LaunchImage.swift */,
+				D4CD0B9D1A2D3AD7003B83B4 /* UIFont+CardsAgainst.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				E86DCD1B1A0768F8009BEC5A /* CardManager.swift in Sources */,
 				E8F188FB19FCA3EA001C5080 /* AppDelegate.swift in Sources */,
 				E8C9BBA71A0807D80084813D /* SVProgressHUD.m in Sources */,
+				D4CD0B9E1A2D3AD7003B83B4 /* UIFont+CardsAgainst.swift in Sources */,
 				E865F8761A07FF41001C5E11 /* WhiteCardFlowLayout.swift in Sources */,
 				E8652A891A099AF50029BC21 /* PlayerCell.swift in Sources */,
 				E8AF29351A0759BC004F4E73 /* GameState.swift in Sources */,
@@ -662,6 +666,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/Supporting Files/CardsAgainst-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -675,6 +680,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/Supporting Files/CardsAgainst-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
