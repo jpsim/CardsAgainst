@@ -12,35 +12,37 @@ import MultipeerConnectivity
 private let myName = UIDevice.currentDevice().name
 
 struct Player: Hashable, Equatable, MPCSerializable {
+
+    // MARK: Properties
+
     let name: String
-    let me: Bool
 
+    // MARK: Computed Properties
+
+    var me: Bool { return name == myName }
     var displayName: String { return me ? "You" : name }
-
     var hashValue: Int { return name.hash }
+    var mpcSerialized: NSData { return name.dataUsingEncoding(NSUTF8StringEncoding)! }
 
-    var mpcSerialized: NSData {
-        return name.dataUsingEncoding(NSUTF8StringEncoding)!
-    }
+    // MARK: Initializers
 
     init(name: String) {
         self.name = name
-        me = (name == myName)
     }
 
     init(mpcSerialized: NSData) {
         name = NSString(data: mpcSerialized, encoding: NSUTF8StringEncoding)!
-        me = (name == myName)
     }
 
     init(peer: MCPeerID) {
         name = peer.displayName
-        me = (name == myName)
     }
 
     static func getMe() -> Player {
         return Player(name: myName)
     }
+
+    // MARK: Methods
 
     func winningString() -> String {
         if me {

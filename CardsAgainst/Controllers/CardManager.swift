@@ -10,7 +10,7 @@ import Foundation
 
 private let pg13 = true
 
-private let (blackCards, whiteCards) = ({
+private func loadCards() -> ([Card], [Card]) {
     let resourceName = pg13 ? "cards_pg13" : "cards"
     let jsonPath = NSBundle.mainBundle().pathForResource(resourceName, ofType: "json")
     let cards = NSJSONSerialization.JSONObjectWithData(NSData(contentsOfFile: jsonPath!)!, options: nil, error: nil) as [[String: String]]
@@ -30,7 +30,9 @@ private let (blackCards, whiteCards) = ({
     }
 
     return (blackCards, whiteCards)
-} as () -> ([Card], [Card]))()
+}
+
+private let (blackCards, whiteCards) = loadCards()
 
 private var (mWhiteCards, mBlackCards) = ([Card](), [Card]())
 
@@ -47,7 +49,7 @@ struct CardManager {
     private static func takeRandom<U>(inout mutable: [U], original: [U]) -> U {
         if mutable.count == 0 {
             // reshuffle
-            mutable = original.sorted { _, _ in arc4random() % 2 == 0 }
+            mutable = original.sorted { _ in arc4random() % 2 == 0 }
         }
         return mutable.removeLast()
     }

@@ -9,15 +9,13 @@
 import UIKit
 import Cartography
 
-class PlayerCell: UICollectionViewCell {
+final class PlayerCell: UICollectionViewCell {
 
     class var reuseID: String { return "PlayerCell" }
     let label = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        // Label
         setupLabel()
     }
 

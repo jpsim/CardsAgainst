@@ -17,7 +17,7 @@ private func easeInOut(var t: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat) -> CG
     return c/2*(t*t*t + 2) + b
 }
 
-class WhiteCardFlowLayout: UICollectionViewFlowLayout {
+final class WhiteCardFlowLayout: UICollectionViewFlowLayout {
 
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
         let layoutAttributes = super.layoutAttributesForElementsInRect(rect)

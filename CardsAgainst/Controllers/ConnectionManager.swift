@@ -28,21 +28,15 @@ struct ConnectionManager {
 
     // MARK: Properties
 
-    static var peers: [MCPeerID] {
-        if let session = PeerKit.session {
-            return session.connectedPeers as [MCPeerID]
-        }
-        return [MCPeerID]()
+    private static var peers: [MCPeerID] {
+        return PeerKit.session?.connectedPeers as [MCPeerID]? ?? []
     }
 
     static var otherPlayers: [Player] {
-        if let session = PeerKit.session {
-            return (session.connectedPeers as [MCPeerID]).map { Player(peer: $0) }
-        }
-        return [Player]()
+        return peers.map { Player(peer: $0) }
     }
 
-    static var allPlayers: [Player] { return [Player.getMe()] + ConnectionManager.otherPlayers }
+    static var allPlayers: [Player] { return [Player.getMe()] + otherPlayers }
 
     // MARK: Start
 

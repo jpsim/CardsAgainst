@@ -38,7 +38,7 @@ struct Card: MPCSerializable {
 }
 
 struct CardArray: MPCSerializable {
-    var array: Array<Card>
+    let array: Array<Card>
 
     var mpcSerialized: NSData {
         return NSKeyedArchiver.archivedDataWithRootObject(array.map { $0.mpcSerialized })
