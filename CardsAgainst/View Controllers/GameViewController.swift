@@ -80,7 +80,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         return votesForPlayers.keys.array.filter({votesForPlayers[$0] == maxVotes}).first!
     }
     private var stats: String {
-        return join("\n", scores.keys.array.map({ "\($0.displayName): \(self.scores[$0])" }))
+        return join("\n", scores.keys.array.map({ "\($0.displayName): \(self.scores[$0] ?? 0)" }))
     }
     private var unansweredPlayers: [Player] {
         let answeredPlayers = answers.map { $0.sender }
@@ -434,7 +434,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         showHUD("\(winner.winningString())\n\n\(stats)", duration: 2)
     }
 
-    private func showStats() {
+    func showStats() {
         showHUD(stats)
     }
 
@@ -448,7 +448,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Voting
 
-    private func vote() {
+    func vote() {
         if hasVoted {
             return
         }
@@ -538,7 +538,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    private func removeLastWhiteCard() {
+    func removeLastWhiteCard() {
         if let lastRange = blackCardLabel.placeholderRanges.last {
             let blackCardLabelNSString = blackCardLabel.text! as NSString
             whiteCardCollectionView.performBatchUpdates({

@@ -129,7 +129,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Actions
 
-    private func startGame() {
+    func startGame() {
         let blackCard = CardManager.nextCardsWithType(.Black).first!
         let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
         sendBlackCard(blackCard)
