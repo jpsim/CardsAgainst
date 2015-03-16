@@ -11,7 +11,7 @@ import UIKit
 final class TouchableLabel: UILabel {
     var placeholderRanges = [NSRange]()
 
-    override init() {
+    override init(frame: CGRect) {
         super.init(frame: CGRectZero)
         userInteractionEnabled = true
     }
@@ -22,21 +22,21 @@ final class TouchableLabel: UILabel {
 
     private func setLastTokenAlpha(alpha: CGFloat) {
         if let lastRange = placeholderRanges.last {
-            let mAttributedText = attributedText.mutableCopy() as NSMutableAttributedString
+            let mAttributedText = attributedText.mutableCopy() as! NSMutableAttributedString
             mAttributedText.addAttribute(NSForegroundColorAttributeName, value: tintColor.colorWithAlphaComponent(alpha), range: lastRange)
             attributedText = mAttributedText
         }
     }
 
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         setLastTokenAlpha(0.5)
     }
 
-    override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
         setLastTokenAlpha(1)
     }
 
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         setLastTokenAlpha(1)
     }
 }

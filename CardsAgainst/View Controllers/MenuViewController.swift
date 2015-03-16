@@ -13,7 +13,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Properties
 
-    private let startGameButton = UIButton.buttonWithType(.System) as UIButton
+    private let startGameButton = UIButton.buttonWithType(.System) as! UIButton
     private let separator = UIView()
     private let collectionView = UICollectionView(frame: CGRectZero,
         collectionViewLayout: UICollectionViewFlowLayout())
@@ -41,7 +41,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
             self.updatePlayers()
         }
         ConnectionManager.onEvent(.StartGame) { _, object in
-            let dict = object as [String: NSData]
+            let dict = object as! [String: NSData]
             let blackCard = Card(mpcSerialized: dict["blackCard"]!)
             let whiteCards = CardArray(mpcSerialized: dict["whiteCards"]!).array
             self.startGame(blackCard: blackCard, whiteCards: whiteCards)
@@ -106,7 +106,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     private func setupCollectionView() {
         // Collection View
-        let cvLayout = collectionView.collectionViewLayout as UICollectionViewFlowLayout
+        let cvLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         cvLayout.itemSize = CGSizeMake(separator.frame.size.width, 50)
         cvLayout.minimumLineSpacing = 0
         collectionView.dataSource = self
@@ -163,7 +163,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PlayerCell.reuseID, forIndexPath: indexPath) as PlayerCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PlayerCell.reuseID, forIndexPath: indexPath) as! PlayerCell
         cell.label.text = ConnectionManager.otherPlayers[indexPath.row].name
         return cell
     }

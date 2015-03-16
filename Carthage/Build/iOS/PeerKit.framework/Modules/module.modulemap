@@ -1,0 +1,10 @@
+framework module PeerKit {
+  umbrella header "PeerKit.h"
+
+  export *
+  module * { export * }
+}
+
+module PeerKit.Swift {
+    header "PeerKit-Swift.h"
+}

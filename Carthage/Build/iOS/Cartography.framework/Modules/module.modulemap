@@ -1,0 +1,10 @@
+framework module Cartography {
+  umbrella header "Cartography.h"
+
+  export *
+  module * { export * }
+}
+
+module Cartography.Swift {
+    header "Cartography-Swift.h"
+}

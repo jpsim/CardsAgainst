@@ -1,0 +1,3 @@
+github "jpsim/PeerKit" "swift1p2"
+github "TransitApp/SVProgressHUD" >= 1.1.3
+github "robb/Cartography" "xcode6-3"
