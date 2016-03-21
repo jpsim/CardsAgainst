@@ -75,7 +75,7 @@ struct ConnectionManager {
         PeerKit.sendEvent(event.rawValue, object: anyObject, toPeers: peers)
     }
 
-    static func sendEventForEach(event: Event, objectBlock: () -> ([String: MPCSerializable])) {
+    static func sendEventForEach(event: Event, @noescape objectBlock: () -> ([String: MPCSerializable])) {
         for peer in ConnectionManager.peers {
             ConnectionManager.sendEvent(event, object: objectBlock(), toPeers: [peer])
         }

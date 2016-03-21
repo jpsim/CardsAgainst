@@ -29,6 +29,8 @@
 		E8C9BBC11A08569B0084813D /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = E8C9BBC01A08569B0084813D /* cards.json */; };
 		E8D6D1E41A0B665D00CDF953 /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6D1E31A0B665D00CDF953 /* Vote.swift */; };
 		E8D6D1E91A0B667000CDF953 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6D1E81A0B667000CDF953 /* Answer.swift */; };
+		E8DB8BFA1CA069F10002D4DD /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DB8BF71CA069F10002D4DD /* SVIndefiniteAnimatedView.m */; };
+		E8DB8BFB1CA069F20002D4DD /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DB8BF91CA069F10002D4DD /* SVRadialGradientLayer.m */; };
 		E8F188FB19FCA3EA001C5080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F188FA19FCA3EA001C5080 /* AppDelegate.swift */; };
 		E8F1891119FCA3EA001C5080 /* CardsAgainstTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1891019FCA3EA001C5080 /* CardsAgainstTests.swift */; };
 		E8F1891B19FCA524001C5080 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F1891A19FCA524001C5080 /* Colors.swift */; };
@@ -38,6 +40,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E805BCB11CA06295006EAA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 632F090A1BF1E7AA002431A3;
+			remoteInfo = "Cartography-tvOS";
+		};
+		E805BCB31CA06295006EAA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 632F09221BF1E7FC002431A3;
+			remoteInfo = "Cartography-tvOS-tests";
+		};
+		E805BCB81CA06295006EAA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E86EC4421AB734F5001A7734;
+			remoteInfo = "PeerKit-iOS-Tests";
+		};
+		E805BCBA1CA06295006EAA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8DC82821AB7306C000BB585;
+			remoteInfo = "PeerKit-OSX";
+		};
+		E805BCBC1CA06295006EAA76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E86EC4521AB73597001A7734;
+			remoteInfo = "PeerKit-OSX-Tests";
+		};
 		E8AF29251A074F2D004F4E73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */;
@@ -86,13 +123,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = E89FD6C01A0C3CDC00C2FEF7;
 			remoteInfo = PeerKit;
-		};
-		E8F805E31A0C3E8700D95CC3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E8F805CB1A0C3E8700D95CC3 /* PeerKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E89FD6CB1A0C3CDC00C2FEF7;
-			remoteInfo = PeerKitTests;
 		};
 		E8F805E51A0C3E9E00D95CC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -143,6 +173,10 @@
 		E8C9BBC01A08569B0084813D /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		E8D6D1E31A0B665D00CDF953 /* Vote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		E8D6D1E81A0B667000CDF953 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		E8DB8BF61CA069F10002D4DD /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		E8DB8BF71CA069F10002D4DD /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		E8DB8BF81CA069F10002D4DD /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		E8DB8BF91CA069F10002D4DD /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		E8F188F519FCA3EA001C5080 /* CardsAgainst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardsAgainst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F188F919FCA3EA001C5080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8F188FA19FCA3EA001C5080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -268,6 +302,8 @@
 				E8AF29281A074F2D004F4E73 /* Cartography-iOS-Tests.xctest */,
 				E8AF292A1A074F2D004F4E73 /* Cartography.framework */,
 				E8AF292C1A074F2D004F4E73 /* Cartography-Mac-Tests.xctest */,
+				E805BCB21CA06295006EAA76 /* Cartography.framework */,
+				E805BCB41CA06295006EAA76 /* Cartography-tvOS-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,6 +319,10 @@
 		E8C9BB921A0807D80084813D /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				E8DB8BF61CA069F10002D4DD /* SVIndefiniteAnimatedView.h */,
+				E8DB8BF71CA069F10002D4DD /* SVIndefiniteAnimatedView.m */,
+				E8DB8BF81CA069F10002D4DD /* SVRadialGradientLayer.h */,
+				E8DB8BF91CA069F10002D4DD /* SVRadialGradientLayer.m */,
 				E8C9BB931A0807D80084813D /* SVProgressHUD-Prefix.pch */,
 				E8C9BB941A0807D80084813D /* SVProgressHUD.bundle */,
 				E8C9BB951A0807D80084813D /* SVProgressHUD.h */,
@@ -364,7 +404,9 @@
 			isa = PBXGroup;
 			children = (
 				E8F805E21A0C3E8700D95CC3 /* PeerKit.framework */,
-				E8F805E41A0C3E8700D95CC3 /* PeerKitTests.xctest */,
+				E805BCB91CA06295006EAA76 /* PeerKit-iOS-Tests.xctest */,
+				E805BCBB1CA06295006EAA76 /* PeerKit.framework */,
+				E805BCBD1CA06295006EAA76 /* PeerKit-OSX-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -416,6 +458,8 @@
 		E8F188ED19FCA3EA001C5080 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "JP Simard";
 				TargetAttributes = {
@@ -458,6 +502,41 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		E805BCB21CA06295006EAA76 /* Cartography.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Cartography.framework;
+			remoteRef = E805BCB11CA06295006EAA76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E805BCB41CA06295006EAA76 /* Cartography-tvOS-tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Cartography-tvOS-tests.xctest";
+			remoteRef = E805BCB31CA06295006EAA76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E805BCB91CA06295006EAA76 /* PeerKit-iOS-Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PeerKit-iOS-Tests.xctest";
+			remoteRef = E805BCB81CA06295006EAA76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E805BCBB1CA06295006EAA76 /* PeerKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PeerKit.framework;
+			remoteRef = E805BCBA1CA06295006EAA76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E805BCBD1CA06295006EAA76 /* PeerKit-OSX-Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PeerKit-OSX-Tests.xctest";
+			remoteRef = E805BCBC1CA06295006EAA76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E8AF29261A074F2D004F4E73 /* Cartography.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -491,13 +570,6 @@
 			fileType = wrapper.framework;
 			path = PeerKit.framework;
 			remoteRef = E8F805E11A0C3E8700D95CC3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E8F805E41A0C3E8700D95CC3 /* PeerKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PeerKitTests.xctest;
-			remoteRef = E8F805E31A0C3E8700D95CC3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -535,6 +607,7 @@
 				E86DCD1B1A0768F8009BEC5A /* CardManager.swift in Sources */,
 				E8F188FB19FCA3EA001C5080 /* AppDelegate.swift in Sources */,
 				E8C9BBA71A0807D80084813D /* SVProgressHUD.m in Sources */,
+				E8DB8BFB1CA069F20002D4DD /* SVRadialGradientLayer.m in Sources */,
 				D4CD0B9E1A2D3AD7003B83B4 /* UIFont+CardsAgainst.swift in Sources */,
 				E865F8761A07FF41001C5E11 /* WhiteCardFlowLayout.swift in Sources */,
 				E8652A891A099AF50029BC21 /* PlayerCell.swift in Sources */,
@@ -543,6 +616,7 @@
 				E86DCD211A078E72009BEC5A /* MPCAttributedString.swift in Sources */,
 				E8D6D1E41A0B665D00CDF953 /* Vote.swift in Sources */,
 				E8F1891B19FCA524001C5080 /* Colors.swift in Sources */,
+				E8DB8BFA1CA069F10002D4DD /* SVIndefiniteAnimatedView.m in Sources */,
 				E865F87B1A08016B001C5E11 /* WhiteCardCell.swift in Sources */,
 				E86DCD141A075E16009BEC5A /* Player.swift in Sources */,
 				E82FC1901A0B57B600516EE5 /* UIImage+LaunchImage.swift in Sources */,

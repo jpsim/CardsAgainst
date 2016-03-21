@@ -35,20 +35,20 @@ final class WhiteCardCell: UICollectionViewCell {
         setupLabel()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     private func setupLabel() {
         // Label
         contentView.addSubview(label)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.lineBreakMode = .ByWordWrapping
         label.font = UIFont.whiteCardFont
 
         // Layout
-        layout(label) { label in
+        constrain(label) { label in
             label.edges == inset(label.superview!.edges, 15, 10); return
         }
     }

@@ -30,7 +30,7 @@ struct Card: MPCSerializable {
     }
 
     init(mpcSerialized: NSData) {
-        let dict = NSKeyedUnarchiver.unarchiveObjectWithData(mpcSerialized) as [String: String]
+        let dict = NSKeyedUnarchiver.unarchiveObjectWithData(mpcSerialized) as! [String: String]
         content = dict["content"]!
         type = CardType(rawValue: dict["type"]!)!
         expansion = dict["expansion"]!
@@ -49,7 +49,7 @@ struct CardArray: MPCSerializable {
     }
 
     init(mpcSerialized: NSData) {
-        let dataArray = NSKeyedUnarchiver.unarchiveObjectWithData(mpcSerialized) as [NSData]
+        let dataArray = NSKeyedUnarchiver.unarchiveObjectWithData(mpcSerialized) as! [NSData]
         array = dataArray.map { return Card(mpcSerialized: $0) }
     }
 }

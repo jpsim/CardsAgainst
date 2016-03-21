@@ -31,7 +31,7 @@ extension UIImage {
             // iPads, ev'ry last one of 'em
             launchImageName = "LaunchImage-700-Portrait@2x~ipad"
         default:
-            assertionFailure("Unable to find a LaunchImage for this device's screen size (height of \(screenHeight)pt).  UIImage+LaunchImage likely needs to be updated.")
+            fatalError("Unable to find a LaunchImage for this device's screen size (height of \(screenHeight)pt).  UIImage+LaunchImage likely needs to be updated.")
         }
         return UIImage(named: launchImageName)!
     }
