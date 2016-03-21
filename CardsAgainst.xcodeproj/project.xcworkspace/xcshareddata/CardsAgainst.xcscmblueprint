@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D429D03651EABCB3A00B4BB7FCB2986A61F36791",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9A64317953518213A59F0416BCEF6EF2D02BD22B" : 0,
+    "D429D03651EABCB3A00B4BB7FCB2986A61F36791" : 0,
+    "364D2E5F611143E7C4D0A99C691B1988FBD5381F" : 0,
+    "9E1ECC80773D1F4F22D03CB4DEA298B3CB57FAF5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "105BF1D1-0D6F-4BAB-8720-EFD5A6A4EF69",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9A64317953518213A59F0416BCEF6EF2D02BD22B" : "CardsAgainst\/Vendor\/PeerKit\/",
+    "D429D03651EABCB3A00B4BB7FCB2986A61F36791" : "CardsAgainst\/",
+    "364D2E5F611143E7C4D0A99C691B1988FBD5381F" : "CardsAgainst\/Vendor\/Cartography\/",
+    "9E1ECC80773D1F4F22D03CB4DEA298B3CB57FAF5" : "CardsAgainst\/Vendor\/SVProgressHUD\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CardsAgainst",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CardsAgainst.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:robb\/Cartography.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "364D2E5F611143E7C4D0A99C691B1988FBD5381F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jpsim\/PeerKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9A64317953518213A59F0416BCEF6EF2D02BD22B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:TransitApp\/SVProgressHUD.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9E1ECC80773D1F4F22D03CB4DEA298B3CB57FAF5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jpsim\/CardsAgainst",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D429D03651EABCB3A00B4BB7FCB2986A61F36791"
+    }
+  ]
+}

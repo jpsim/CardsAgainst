@@ -20,7 +20,7 @@ struct MPCAttributedString: MPCSerializable {
     }
 
     init(mpcSerialized: NSData) {
-        let attributedString = NSKeyedUnarchiver.unarchiveObjectWithData(mpcSerialized) as NSAttributedString
+        let attributedString = NSKeyedUnarchiver.unarchiveObjectWithData(mpcSerialized) as! NSAttributedString
         self.init(attributedString: attributedString)
     }
 }

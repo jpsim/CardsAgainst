@@ -31,7 +31,7 @@ struct Player: Hashable, Equatable, MPCSerializable {
     }
 
     init(mpcSerialized: NSData) {
-        name = NSString(data: mpcSerialized, encoding: NSUTF8StringEncoding)!
+        name = NSString(data: mpcSerialized, encoding: NSUTF8StringEncoding)! as String
     }
 
     init(peer: MCPeerID) {
