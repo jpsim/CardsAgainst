@@ -78,7 +78,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         startGameButton.titleLabel!.font = startGameButton.titleLabel!.font.fontWithSize(25)
         startGameButton.setTitle("Waiting For Players", forState: .Disabled)
         startGameButton.setTitle("Start Game", forState: .Normal)
-        startGameButton.addTarget(self, action: "startGame", forControlEvents: .TouchUpInside)
+        startGameButton.addTarget(self, action: #selector(MenuViewController.startGame as (MenuViewController) -> () -> ()), forControlEvents: .TouchUpInside)
         startGameButton.enabled = false
         view.addSubview(startGameButton)
 

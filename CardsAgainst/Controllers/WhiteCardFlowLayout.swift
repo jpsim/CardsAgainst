@@ -8,7 +8,8 @@
 
 import UIKit
 
-private func easeInOut(var t: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat) -> CGFloat {
+private func easeInOut( t: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat) -> CGFloat {
+    var t = t
     t /= d/2
     if t < 1 {
         return c/2*t*t*t + b

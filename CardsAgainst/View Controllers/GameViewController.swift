@@ -115,7 +115,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Stats",
             style: .Plain,
             target: self,
-            action: "showStats")
+            action: #selector(GameViewController.showStats))
 
         // UI
         setupVoteButton()
@@ -166,7 +166,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         voteButton.titleLabel?.numberOfLines = 0
         voteButton.titleLabel?.textAlignment = .Center
         voteButton.titleLabel?.font = UIFont.voteButtonFont
-        voteButton.addTarget(self, action: "vote", forControlEvents: .TouchUpInside)
+        voteButton.addTarget(self, action: #selector(GameViewController.vote), forControlEvents: .TouchUpInside)
 
         // Layout
         constrain(voteButton) { voteButton in
@@ -228,7 +228,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
 
         // Gesture
-        blackCardLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "removeLastWhiteCard"))
+        blackCardLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GameViewController.removeLastWhiteCard)))
     }
 
     private func setupWhiteCardCollectionView() {
@@ -259,7 +259,8 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     private func updateTitle() {
-        title = "Card \(++numberOfCardsPlayed)"
+        numberOfCardsPlayed += 1
+        title = "Card \(numberOfCardsPlayed)"
     }
 
     private func prepareForBlackCards() {
@@ -362,7 +363,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             let winner = Player(mpcSerialized: dict["winner"]!)
             let blackCard = Card(mpcSerialized: dict["blackCard"]!)
             let whiteCards = CardArray(mpcSerialized: dict["whiteCards"]!).array
-            self.scores[winner]!++
+            self.scores[winner]! += 1
             self.nextBlackCard(blackCard, newWhiteCards: whiteCards, winner: winner)
         }
 
@@ -380,7 +381,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     private func nextCardWithWinner(winner: Player) {
         let blackCard = CardManager.nextCardsWithType(.Black).first!
-        scores[winner]!++
+        scores[winner]! += 1
         ConnectionManager.sendEventForEach(.NextCard) {
             let nextWhiteCards = CardManager.nextCardsWithType(.White, count: UInt(10 - self.whiteCards.count))
             let payload: [String: MPCSerializable] = [
