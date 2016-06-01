@@ -19,6 +19,7 @@
 		E86DCD1D1A07692E009BEC5A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DCD1C1A07692E009BEC5A /* Card.swift */; };
 		E86DCD1F1A077833009BEC5A /* TouchableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DCD1E1A077833009BEC5A /* TouchableLabel.swift */; };
 		E86DCD211A078E72009BEC5A /* MPCAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DCD201A078E72009BEC5A /* MPCAttributedString.swift */; };
+		E8A6C6B11CFF8ACB0088DB27 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A6C6B01CFF8ACB0088DB27 /* SVProgressAnimatedView.m */; };
 		E8AF292F1A074F52004F4E73 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8AF29261A074F2D004F4E73 /* Cartography.framework */; };
 		E8AF29311A074F61004F4E73 /* Cartography.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E8AF29261A074F2D004F4E73 /* Cartography.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8AF29331A0759B3004F4E73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF29321A0759B3004F4E73 /* GameViewController.swift */; };
@@ -161,6 +162,8 @@
 		E86DCD1C1A07692E009BEC5A /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E86DCD1E1A077833009BEC5A /* TouchableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchableLabel.swift; sourceTree = "<group>"; };
 		E86DCD201A078E72009BEC5A /* MPCAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCAttributedString.swift; sourceTree = "<group>"; };
+		E8A6C6AF1CFF8ACB0088DB27 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		E8A6C6B01CFF8ACB0088DB27 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
 		E8AF28FA1A074F2D004F4E73 /* Cartography.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Cartography.xcodeproj; sourceTree = "<group>"; };
 		E8AF29321A0759B3004F4E73 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		E8AF29341A0759BC004F4E73 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
@@ -321,12 +324,14 @@
 			children = (
 				E8DB8BF61CA069F10002D4DD /* SVIndefiniteAnimatedView.h */,
 				E8DB8BF71CA069F10002D4DD /* SVIndefiniteAnimatedView.m */,
-				E8DB8BF81CA069F10002D4DD /* SVRadialGradientLayer.h */,
-				E8DB8BF91CA069F10002D4DD /* SVRadialGradientLayer.m */,
+				E8A6C6AF1CFF8ACB0088DB27 /* SVProgressAnimatedView.h */,
+				E8A6C6B01CFF8ACB0088DB27 /* SVProgressAnimatedView.m */,
 				E8C9BB931A0807D80084813D /* SVProgressHUD-Prefix.pch */,
 				E8C9BB941A0807D80084813D /* SVProgressHUD.bundle */,
 				E8C9BB951A0807D80084813D /* SVProgressHUD.h */,
 				E8C9BB961A0807D80084813D /* SVProgressHUD.m */,
+				E8DB8BF81CA069F10002D4DD /* SVRadialGradientLayer.h */,
+				E8DB8BF91CA069F10002D4DD /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
 			sourceTree = "<group>";
@@ -460,7 +465,7 @@
 			attributes = {
 				LastSwiftMigration = 0720;
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "JP Simard";
 				TargetAttributes = {
 					E8F188F419FCA3EA001C5080 = {
@@ -613,6 +618,7 @@
 				E8652A891A099AF50029BC21 /* PlayerCell.swift in Sources */,
 				E8AF29351A0759BC004F4E73 /* GameState.swift in Sources */,
 				E86DCD191A0766C6009BEC5A /* ConnectionManager.swift in Sources */,
+				E8A6C6B11CFF8ACB0088DB27 /* SVProgressAnimatedView.m in Sources */,
 				E86DCD211A078E72009BEC5A /* MPCAttributedString.swift in Sources */,
 				E8D6D1E41A0B665D00CDF953 /* Vote.swift in Sources */,
 				E8F1891B19FCA524001C5080 /* Colors.swift in Sources */,
@@ -673,6 +679,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -738,6 +745,7 @@
 				INFOPLIST_FILE = "CardsAgainst/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpsim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/Supporting Files/CardsAgainst-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -752,6 +760,7 @@
 				INFOPLIST_FILE = "CardsAgainst/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpsim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CardsAgainst/Supporting Files/CardsAgainst-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -762,16 +771,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CardsAgainstTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpsim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardsAgainst.app/CardsAgainst";
 			};
@@ -781,12 +788,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "CardsAgainstTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpsim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardsAgainst.app/CardsAgainst";
 			};
