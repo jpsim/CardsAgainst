@@ -32,7 +32,7 @@ final class TouchableLabel: UILabel {
         setLastTokenAlpha(0.5)
     }
 
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent?) {
         setLastTokenAlpha(1)
     }
 
