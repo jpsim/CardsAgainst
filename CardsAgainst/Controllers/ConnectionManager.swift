@@ -11,8 +11,8 @@ import PeerKit
 import MultipeerConnectivity
 
 protocol MPCSerializable {
-    var mpcSerialized: NSData { get }
-    init(mpcSerialized: NSData)
+    var mpcSerialized: Data { get }
+    init(mpcSerialized: Data)
 }
 
 enum Event: String {
@@ -28,7 +28,7 @@ struct ConnectionManager {
 
     // MARK: Properties
 
-    private static var peers: [MCPeerID] {
+    fileprivate static var peers: [MCPeerID] {
         return PeerKit.session?.connectedPeers as [MCPeerID]? ?? []
     }
 
@@ -41,41 +41,41 @@ struct ConnectionManager {
     // MARK: Start
 
     static func start() {
-        PeerKit.transceive("cards-against")
+        PeerKit.transceive(serviceType: "cards-against")
     }
 
     // MARK: Event Handling
 
-    static func onConnect(run: PeerBlock?) {
+    static func onConnect(_ run: PeerBlock?) {
         PeerKit.onConnect = run
     }
 
-    static func onDisconnect(run: PeerBlock?) {
+    static func onDisconnect(_ run: PeerBlock?) {
         PeerKit.onDisconnect = run
     }
 
-    static func onEvent(event: Event, run: ObjectBlock?) {
+    static func onEvent(_ event: Event, run: ObjectBlock?) {
         if let run = run {
             PeerKit.eventBlocks[event.rawValue] = run
         } else {
-            PeerKit.eventBlocks.removeValueForKey(event.rawValue)
+            PeerKit.eventBlocks.removeValue(forKey: event.rawValue)
         }
     }
 
     // MARK: Sending
 
-    static func sendEvent(event: Event, object: [String: MPCSerializable]? = nil, toPeers peers: [MCPeerID]? = PeerKit.session?.connectedPeers as [MCPeerID]?) {
-        var anyObject: [String: NSData]?
+    static func sendEvent(_ event: Event, object: [String: MPCSerializable]? = nil, toPeers peers: [MCPeerID]? = PeerKit.session?.connectedPeers as [MCPeerID]?) {
+        var anyObject: [String: Data]?
         if let object = object {
-            anyObject = [String: NSData]()
+            anyObject = [String: Data]()
             for (key, value) in object {
                 anyObject![key] = value.mpcSerialized
             }
         }
-        PeerKit.sendEvent(event.rawValue, object: anyObject, toPeers: peers)
+        PeerKit.sendEvent(event.rawValue, object: anyObject as AnyObject, toPeers: peers)
     }
 
-    static func sendEventForEach(event: Event, @noescape objectBlock: () -> ([String: MPCSerializable])) {
+    static func sendEventForEach(_ event: Event, objectBlock: () -> ([String: MPCSerializable])) {
         for peer in ConnectionManager.peers {
             ConnectionManager.sendEvent(event, object: objectBlock(), toPeers: [peer])
         }

@@ -11,13 +11,13 @@ import UIKit
 /// The screen width the base font sizes are designed for.
 private let baseScreenWidth: CGFloat = 375
 
-private func screenScaledFontSize(baseFontSize: CGFloat) -> CGFloat {
-    let screenPortraitWidth = UIScreen.mainScreen().nativeBounds.size.width / UIScreen.mainScreen().nativeScale
+private func screenScaledFontSize(_ baseFontSize: CGFloat) -> CGFloat {
+    let screenPortraitWidth = UIScreen.main.nativeBounds.size.width / UIScreen.main.nativeScale
     return baseFontSize / baseScreenWidth * screenPortraitWidth
 }
 
 extension UIFont {
-    class var blackCardFont: UIFont { return UIFont.boldSystemFontOfSize(screenScaledFontSize(35)) }
-    class var whiteCardFont: UIFont { return UIFont.boldSystemFontOfSize(screenScaledFontSize(20)) }
-    class var voteButtonFont: UIFont { return UIFont.systemFontOfSize(screenScaledFontSize(17)) }
+    class var blackCardFont: UIFont { return UIFont.boldSystemFont(ofSize: screenScaledFontSize(35)) }
+    class var whiteCardFont: UIFont { return UIFont.boldSystemFont(ofSize: screenScaledFontSize(20)) }
+    class var voteButtonFont: UIFont { return UIFont.systemFont(ofSize: screenScaledFontSize(17)) }
 }

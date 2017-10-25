@@ -23,12 +23,12 @@ final class PlayerCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupLabel() {
+    fileprivate func setupLabel() {
         // Label
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = lightColor
-        label.font = UIFont.boldSystemFontOfSize(22)
+        label.font = UIFont.boldSystemFont(ofSize: 22)
 
         // Layout
         constrain(label) { label in

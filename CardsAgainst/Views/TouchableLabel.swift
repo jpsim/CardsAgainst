@@ -13,30 +13,30 @@ final class TouchableLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setLastTokenAlpha(alpha: CGFloat) {
+    fileprivate func setLastTokenAlpha(_ alpha: CGFloat) {
         if let lastRange = placeholderRanges.last,
-            mAttributedText = attributedText?.mutableCopy() as? NSMutableAttributedString {
-            mAttributedText.addAttribute(NSForegroundColorAttributeName, value: tintColor.colorWithAlphaComponent(alpha), range: lastRange)
+            let mAttributedText = attributedText?.mutableCopy() as? NSMutableAttributedString {
+            mAttributedText.addAttribute(NSForegroundColorAttributeName, value: tintColor.withAlphaComponent(alpha), range: lastRange)
             attributedText = mAttributedText
         }
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         setLastTokenAlpha(0.5)
     }
 
-    override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         setLastTokenAlpha(1)
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         setLastTokenAlpha(1)
     }
 }

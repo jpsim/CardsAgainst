@@ -9,7 +9,7 @@
 import Foundation
 import MultipeerConnectivity
 
-private let myName = UIDevice.currentDevice().name
+private let myName = UIDevice.current.name
 
 struct Player: Hashable, Equatable, MPCSerializable {
 
@@ -22,7 +22,7 @@ struct Player: Hashable, Equatable, MPCSerializable {
     var me: Bool { return name == myName }
     var displayName: String { return me ? "You" : name }
     var hashValue: Int { return name.hash }
-    var mpcSerialized: NSData { return name.dataUsingEncoding(NSUTF8StringEncoding)! }
+    var mpcSerialized: Data { return name.data(using: String.Encoding.utf8)! }
 
     // MARK: Initializers
 
@@ -30,8 +30,8 @@ struct Player: Hashable, Equatable, MPCSerializable {
         self.name = name
     }
 
-    init(mpcSerialized: NSData) {
-        name = NSString(data: mpcSerialized, encoding: NSUTF8StringEncoding)! as String
+    init(mpcSerialized: Data) {
+        name = NSString(data: mpcSerialized, encoding: String.Encoding.utf8.rawValue)! as String
     }
 
     init(peer: MCPeerID) {
@@ -51,7 +51,7 @@ struct Player: Hashable, Equatable, MPCSerializable {
         return "\(name) wins this round!"
     }
 
-    func cardString(voted: Bool) -> String {
+    func cardString(_ voted: Bool) -> String {
         if voted {
             return me ? "My card" : "\(name)'s card"
         }

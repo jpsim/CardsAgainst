@@ -14,13 +14,13 @@ final class WhiteCardCell: UICollectionViewCell {
     class var reuseID: String { return "WhiteCardCell" }
 
     let label = UILabel()
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         get {
-            return super.highlighted
+            return super.isHighlighted
         }
         set {
-            contentView.backgroundColor = newValue ? UIColor.grayColor() : lightColor
-            super.highlighted = newValue
+            contentView.backgroundColor = newValue ? UIColor.gray : lightColor
+            super.isHighlighted = newValue
         }
     }
 
@@ -39,12 +39,12 @@ final class WhiteCardCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupLabel() {
+    fileprivate func setupLabel() {
         // Label
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.lineBreakMode = .ByWordWrapping
+        label.lineBreakMode = .byWordWrapping
         label.font = UIFont.whiteCardFont
 
         // Layout

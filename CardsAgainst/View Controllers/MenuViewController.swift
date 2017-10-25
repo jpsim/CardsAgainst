@@ -13,9 +13,9 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Properties
 
-    private let startGameButton = UIButton(type: .System)
-    private let separator = UIView()
-    private let collectionView = UICollectionView(frame: CGRectZero,
+    fileprivate let startGameButton = UIButton(type: .system)
+    fileprivate let separator = UIView()
+    fileprivate let collectionView = UICollectionView(frame: CGRect.zero,
         collectionViewLayout: UICollectionViewFlowLayout())
 
     // MARK: Lifecycle
@@ -31,7 +31,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         setupCollectionView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         ConnectionManager.onConnect { _ in
@@ -42,13 +42,13 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         }
         ConnectionManager.onEvent(.StartGame) { [unowned self] _, object in
             let dict = object as! [String: NSData]
-            let blackCard = Card(mpcSerialized: dict["blackCard"]!)
-            let whiteCards = CardArray(mpcSerialized: dict["whiteCards"]!).array
+            let blackCard = Card(mpcSerialized: dict["blackCard"]! as Data)
+            let whiteCards = CardArray(mpcSerialized: dict["whiteCards"]! as Data).array
             self.startGame(blackCard: blackCard, whiteCards: whiteCards)
         }
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         ConnectionManager.onConnect(nil)
         ConnectionManager.onDisconnect(nil)
         ConnectionManager.onEvent(.StartGame, run: nil)
@@ -58,28 +58,28 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: UI
 
-    private func setupNavigationBar() {
-        navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+    fileprivate func setupNavigationBar() {
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController!.navigationBar.shadowImage = UIImage()
-        navigationController!.navigationBar.translucent = true
+        navigationController!.navigationBar.isTranslucent = true
     }
 
-    private func setupLaunchImage() {
+    fileprivate func setupLaunchImage() {
         view.addSubview(UIImageView(image: UIImage.launchImage()))
 
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         blurView.frame = view.bounds
         view.addSubview(blurView)
     }
 
-    private func setupStartGameButton() {
+    fileprivate func setupStartGameButton() {
         // Button
         startGameButton.translatesAutoresizingMaskIntoConstraints = false
-        startGameButton.titleLabel!.font = startGameButton.titleLabel!.font.fontWithSize(25)
-        startGameButton.setTitle("Waiting For Players", forState: .Disabled)
-        startGameButton.setTitle("Start Game", forState: .Normal)
-        startGameButton.addTarget(self, action: #selector(MenuViewController.startGame as (MenuViewController) -> () -> ()), forControlEvents: .TouchUpInside)
-        startGameButton.enabled = false
+        startGameButton.titleLabel!.font = startGameButton.titleLabel!.font.withSize(25)
+        startGameButton.setTitle("Waiting For Players", for: .disabled)
+        startGameButton.setTitle("Start Game", for: UIControlState())
+        startGameButton.addTarget(self, action: #selector(MenuViewController.startGame as (MenuViewController) -> () -> ()), for: .touchUpInside)
+        startGameButton.isEnabled = false
         view.addSubview(startGameButton)
 
         // Layout
@@ -89,7 +89,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    private func setupSeparator() {
+    fileprivate func setupSeparator() {
         // Separator
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = lightColor
@@ -100,20 +100,20 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
             separator.top == startGameButton.bottom + 10
             separator.centerX == separator.superview!.centerX
             separator.width == separator.superview!.width - 40
-            separator.height == 1 / UIScreen.mainScreen().scale
+            separator.height == 1 / UIScreen.main.scale
         }
     }
 
-    private func setupCollectionView() {
+    fileprivate func setupCollectionView() {
         // Collection View
         let cvLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        cvLayout.itemSize = CGSizeMake(separator.frame.size.width, 50)
+        cvLayout.itemSize = CGSize(width: separator.frame.size.width, height: 50)
         cvLayout.minimumLineSpacing = 0
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.clearColor()
+        collectionView.backgroundColor = UIColor.clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.registerClass(PlayerCell.self,
+        collectionView.register(PlayerCell.self,
             forCellWithReuseIdentifier: PlayerCell.reuseID)
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
@@ -136,14 +136,14 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         startGame(blackCard: blackCard, whiteCards: whiteCards)
     }
 
-    private func startGame(blackCard blackCard: Card, whiteCards: [Card]) {
+    fileprivate func startGame(blackCard: Card, whiteCards: [Card]) {
         let gameVC = GameViewController(blackCard: blackCard, whiteCards: whiteCards)
         navigationController!.pushViewController(gameVC, animated: true)
     }
 
     // MARK: Multipeer
 
-    private func sendBlackCard(blackCard: Card) {
+    fileprivate func sendBlackCard(_ blackCard: Card) {
         ConnectionManager.sendEventForEach(.StartGame) {
             let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
             let whiteCardsArray = CardArray(array: whiteCards)
@@ -151,19 +151,19 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    private func updatePlayers() {
-        startGameButton.enabled = (ConnectionManager.otherPlayers.count > 0)
+    fileprivate func updatePlayers() {
+        startGameButton.isEnabled = (ConnectionManager.otherPlayers.count > 0)
         collectionView.reloadData()
     }
 
     // MARK: UICollectionViewDataSource
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ConnectionManager.otherPlayers.count
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PlayerCell.reuseID, forIndexPath: indexPath) as! PlayerCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayerCell.reuseID, for: indexPath) as! PlayerCell
         cell.label.text = ConnectionManager.otherPlayers[indexPath.row].name
         return cell
     }

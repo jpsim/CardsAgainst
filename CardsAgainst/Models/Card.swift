@@ -19,8 +19,8 @@ struct Card: MPCSerializable {
     let type: CardType
     let expansion: String
 
-    var mpcSerialized: NSData {
-        return NSKeyedArchiver.archivedDataWithRootObject(["content": content, "type": type.rawValue, "expansion": expansion])
+    var mpcSerialized: Data {
+        return NSKeyedArchiver.archivedData(withRootObject: ["content": content, "type": type.rawValue, "expansion": expansion])
     }
 
     init(content: String, type: CardType, expansion: String) {
@@ -29,8 +29,8 @@ struct Card: MPCSerializable {
         self.expansion = expansion
     }
 
-    init(mpcSerialized: NSData) {
-        let dict = NSKeyedUnarchiver.unarchiveObjectWithData(mpcSerialized) as! [String: String]
+    init(mpcSerialized: Data) {
+        let dict = NSKeyedUnarchiver.unarchiveObject(with: mpcSerialized) as! [String: String]
         content = dict["content"]!
         type = CardType(rawValue: dict["type"]!)!
         expansion = dict["expansion"]!
@@ -40,16 +40,16 @@ struct Card: MPCSerializable {
 struct CardArray: MPCSerializable {
     let array: Array<Card>
 
-    var mpcSerialized: NSData {
-        return NSKeyedArchiver.archivedDataWithRootObject(array.map { $0.mpcSerialized })
+    var mpcSerialized: Data {
+        return NSKeyedArchiver.archivedData(withRootObject: array.map { $0.mpcSerialized })
     }
 
     init(array: Array<Card>) {
         self.array = array
     }
 
-    init(mpcSerialized: NSData) {
-        let dataArray = NSKeyedUnarchiver.unarchiveObjectWithData(mpcSerialized) as! [NSData]
+    init(mpcSerialized: Data) {
+        let dataArray = NSKeyedUnarchiver.unarchiveObject(with: mpcSerialized) as! [Data]
         array = dataArray.map { return Card(mpcSerialized: $0) }
     }
 }

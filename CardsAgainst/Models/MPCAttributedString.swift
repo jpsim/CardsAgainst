@@ -11,16 +11,16 @@ import UIKit
 struct MPCAttributedString: MPCSerializable {
     let attributedString: NSAttributedString
 
-    var mpcSerialized: NSData {
-        return NSKeyedArchiver.archivedDataWithRootObject(attributedString)
+    var mpcSerialized: Data {
+        return NSKeyedArchiver.archivedData(withRootObject: attributedString)
     }
 
     init(attributedString: NSAttributedString) {
         self.attributedString = attributedString
     }
 
-    init(mpcSerialized: NSData) {
-        let attributedString = NSKeyedUnarchiver.unarchiveObjectWithData(mpcSerialized) as! NSAttributedString
+    init(mpcSerialized: Data) {
+        let attributedString = NSKeyedUnarchiver.unarchiveObject(with: mpcSerialized) as! NSAttributedString
         self.init(attributedString: attributedString)
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-private func easeInOut( t: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat) -> CGFloat {
+private func easeInOut( _ t: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat) -> CGFloat {
     var t = t
     t /= d/2
     if t < 1 {
@@ -20,12 +20,12 @@ private func easeInOut( t: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat) -> CGFlo
 
 final class WhiteCardFlowLayout: UICollectionViewFlowLayout {
 
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        let layoutAttributes = super.layoutAttributesForElementsInRect(rect)
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let layoutAttributes = super.layoutAttributesForElements(in: rect)
         let topContentInset = collectionView!.contentInset.top + 20
         let transitionRegion = CGFloat(120)
         for attributes in layoutAttributes! as [UICollectionViewLayoutAttributes] {
-            let yOriginInSuperview = collectionView!.convertPoint(attributes.frame.origin, toView: collectionView!.superview).y
+            let yOriginInSuperview = collectionView!.convert(attributes.frame.origin, to: collectionView!.superview).y
             if topContentInset > yOriginInSuperview {
                 let difference = topContentInset - yOriginInSuperview
                 let progress = difference/transitionRegion
@@ -37,7 +37,7 @@ final class WhiteCardFlowLayout: UICollectionViewFlowLayout {
         return layoutAttributes
     }
 
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 }

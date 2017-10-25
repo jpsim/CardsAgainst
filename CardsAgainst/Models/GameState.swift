@@ -9,7 +9,7 @@
 import Foundation
 
 enum GameState {
-    case PickingCard
-    case WaitingForOthers
-    case PickingWinner
+    case pickingCard
+    case waitingForOthers
+    case pickingWinner
 }

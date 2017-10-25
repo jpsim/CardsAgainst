@@ -12,7 +12,7 @@ struct Vote {
     let votee: Player
     let voter: Player
 
-    static func stringFromVoteCount(voteCount: Int) -> String {
+    static func stringFromVoteCount(_ voteCount: Int) -> String {
         switch voteCount {
         case 0:
             return "no votes"
