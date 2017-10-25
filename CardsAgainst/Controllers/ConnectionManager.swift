@@ -16,12 +16,7 @@ protocol MPCSerializable {
 }
 
 enum Event: String {
-    case StartGame = "StartGame",
-    Answer = "Answer",
-    CancelAnswer = "CancelAnswer",
-    Vote = "Vote",
-    NextCard = "NextCard",
-    EndGame = "EndGame"
+    case startGame, answer, cancelAnswer, vote, nextCard, endGame
 }
 
 struct ConnectionManager {
@@ -64,7 +59,8 @@ struct ConnectionManager {
 
     // MARK: Sending
 
-    static func sendEvent(_ event: Event, object: [String: MPCSerializable]? = nil, toPeers peers: [MCPeerID]? = PeerKit.session?.connectedPeers as [MCPeerID]?) {
+    static func sendEvent(_ event: Event, object: [String: MPCSerializable]? = nil,
+                          toPeers peers: [MCPeerID]? = PeerKit.session?.connectedPeers) {
         var anyObject: [String: Data]?
         if let object = object {
             anyObject = [String: Data]()

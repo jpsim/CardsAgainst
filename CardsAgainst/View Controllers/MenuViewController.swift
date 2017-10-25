@@ -40,7 +40,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         ConnectionManager.onDisconnect { _, _ in
             self.updatePlayers()
         }
-        ConnectionManager.onEvent(.StartGame) { [unowned self] _, object in
+        ConnectionManager.onEvent(.startGame) { [unowned self] _, object in
             let dict = object as! [String: NSData]
             let blackCard = Card(mpcSerialized: dict["blackCard"]! as Data)
             let whiteCards = CardArray(mpcSerialized: dict["whiteCards"]! as Data).array
@@ -51,7 +51,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewWillDisappear(_ animated: Bool) {
         ConnectionManager.onConnect(nil)
         ConnectionManager.onDisconnect(nil)
-        ConnectionManager.onEvent(.StartGame, run: nil)
+        ConnectionManager.onEvent(.startGame, run: nil)
 
         super.viewWillDisappear(animated)
     }
@@ -79,7 +79,8 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         startGameButton.setTitle("Waiting For Players", for: .disabled)
         startGameButton.setTitle("Start Game", for: UIControlState())
         startGameButton.addTarget(
-            self, action: #selector(MenuViewController.startGame as (MenuViewController) -> () -> ()),
+            self,
+            action: #selector(MenuViewController.startGame as (MenuViewController) -> () -> Void),
             for: .touchUpInside
         )
         startGameButton.isEnabled = false
@@ -129,8 +130,8 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: Actions
 
     @objc func startGame() {
-        let blackCard = CardManager.nextCardsWithType(.Black).first!
-        let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
+        let blackCard = CardManager.nextCardsWithType(.black).first!
+        let whiteCards = CardManager.nextCardsWithType(.white, count: 10)
         sendBlackCard(blackCard)
         startGame(blackCard: blackCard, whiteCards: whiteCards)
     }
@@ -143,8 +144,8 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: Multipeer
 
     fileprivate func sendBlackCard(_ blackCard: Card) {
-        ConnectionManager.sendEventForEach(.StartGame) {
-            let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
+        ConnectionManager.sendEventForEach(.startGame) {
+            let whiteCards = CardManager.nextCardsWithType(.white, count: 10)
             let whiteCardsArray = CardArray(array: whiteCards)
             return ["blackCard": blackCard, "whiteCards": whiteCardsArray]
         }
@@ -161,8 +162,10 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         return ConnectionManager.otherPlayers.count
     }
 
-    @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayerCell.reuseID, for: indexPath) as! PlayerCell
+    @objc func collectionView(_ collectionView: UICollectionView,
+                              cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayerCell.reuseID,
+                                                      for: indexPath) as! PlayerCell
         cell.label.text = ConnectionManager.otherPlayers[indexPath.row].name
         return cell
     }

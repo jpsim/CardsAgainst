@@ -31,8 +31,8 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     // UI
     fileprivate let blackCardLabel = TouchableLabel()
-    fileprivate let whiteCardCollectionView = UICollectionView(frame: CGRect.zero,
-        collectionViewLayout: WhiteCardFlowLayout())
+    fileprivate let whiteCardCollectionView = UICollectionView(frame: .zero,
+                                                               collectionViewLayout: WhiteCardFlowLayout())
     fileprivate let pageControl = UIPageControl()
     fileprivate let scrollView = UIScrollView()
     fileprivate let scrollViewContentView = UIView()
@@ -77,7 +77,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         return votesForPlayers.keys.filter({votesForPlayers[$0] == maxVotes}).first!
     }
     fileprivate var stats: String {
-        return scores.keys.map({ "\($0.displayName): \(self.scores[$0] ?? 0)" }).joined(separator: "\n")
+        return scores.keys.map({ "\($0.displayName): \(scores[$0] ?? 0)" }).joined(separator: "\n")
     }
     fileprivate var unansweredPlayers: [Player] {
         let answeredPlayers = answers.map { $0.sender }
@@ -109,12 +109,8 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
         updateTitle()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Stats",
-            style: .plain,
-            target: self,
-            action: #selector(GameViewController.showStats)
-        )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Stats", style: .plain, target: self,
+                                                            action: #selector(showStats))
 
         // UI
         setupVoteButton()
@@ -138,8 +134,10 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
         // KVO
         kvoObserver = blackCardLabel.observe(\.bounds, options: .new) { label, _ in
-            self.whiteCardCollectionView.contentInset = UIEdgeInsetsMake(label.frame.size.height + 20 + 64, 0, 20, 0)
-            self.whiteCardCollectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
+            self.whiteCardCollectionView.contentInset = UIEdgeInsets(top: label.frame.size.height + 20 + 64,
+                                                                     left: 0, bottom: 20, right: 0)
+            self.whiteCardCollectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1),
+                                                             animated: true)
         }
 
         setupMultipeerEventHandlers()
@@ -147,7 +145,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     override func viewWillDisappear(_ animated: Bool) {
         kvoObserver?.invalidate()
-        let observedEvents: [Event] = [.Answer, .CancelAnswer, .Vote, .NextCard, .EndGame]
+        let observedEvents: [Event] = [.answer, .cancelAnswer, .vote, .nextCard, .endGame]
         for event in observedEvents {
             ConnectionManager.onEvent(event, run: nil)
         }
@@ -165,7 +163,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         voteButton.titleLabel?.numberOfLines = 0
         voteButton.titleLabel?.textAlignment = .center
         voteButton.titleLabel?.font = UIFont.voteButtonFont
-        voteButton.addTarget(self, action: #selector(GameViewController.vote), for: .touchUpInside)
+        voteButton.addTarget(self, action: #selector(vote), for: .touchUpInside)
 
         // Layout
         constrain(voteButton) { voteButton in
@@ -223,11 +221,12 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             blackCardLabel.top == scrollViewContentView.top + 64
             blackCardLabel.width == scrollViewContentView.width - 32
             blackCardLabel.leading == scrollViewContentView.leading + 16
-            self.blackCardLabelBottomConstraint = (blackCardLabel.bottom <= scrollViewContentView.bottom - 200)
+            blackCardLabelBottomConstraint = (blackCardLabel.bottom <= scrollViewContentView.bottom - 200)
         }
 
         // Gesture
-        blackCardLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GameViewController.removeLastWhiteCard)))
+        blackCardLabel.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                   action: #selector(removeLastWhiteCard)))
     }
 
     fileprivate func setupWhiteCardCollectionView() {
@@ -253,7 +252,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     override func didMove(toParentViewController parent: UIViewController?) {
         // User initiated pop
         if parent == nil {
-            ConnectionManager.sendEvent(.EndGame)
+            ConnectionManager.sendEvent(.endGame)
         }
     }
 
@@ -263,7 +262,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     fileprivate func prepareForBlackCards() {
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 0)
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: 0)
         voteButton.isEnabled = false
         pageControl.alpha = 0
 
@@ -298,8 +297,10 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         scrollView.contentSize = CGSize(width: view.frame.size.width * CGFloat(pageControl.numberOfPages), height: 0)
         for (index, answer) in answers.enumerated() {
             // Content View
-            let contentFrame = scrollViewContentView.frame.offsetBy(dx: scrollViewContentView.frame.size.width * CGFloat(index + 1),
-                dy: 0)
+            let contentFrame = scrollViewContentView.frame.offsetBy(
+                dx: scrollViewContentView.frame.size.width * CGFloat(index + 1),
+                dy: 0
+            )
             let contentView = UIView(frame: contentFrame)
             scrollView.addSubview(contentView)
             otherBlackCardViews.append(contentView)
@@ -315,7 +316,8 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             blackCardLabel.adjustsFontSizeToFitWidth = true
 
             blackCardLabel.attributedText = answer.answer
-            blackCardLabel.font = self.blackCardLabel.font // override remote font size with our own screen-specific size
+            // override remote font size with our own screen-specific size
+            blackCardLabel.font = self.blackCardLabel.font
 
             // Layout
             constrain(blackCardLabel, contentView) { blackCardLabel, contentView in
@@ -331,7 +333,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
 
     fileprivate func setupMultipeerEventHandlers() {
         // Answer
-        ConnectionManager.onEvent(.Answer) { [unowned self] peer, object in
+        ConnectionManager.onEvent(.answer) { [unowned self] peer, object in
             let dict = object as! [String: NSData]
             let attr = MPCAttributedString(mpcSerialized: dict["answer"]! as Data).attributedString
             self.answers.append(Answer(sender: Player(peer: peer), answer: attr))
@@ -342,21 +344,21 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
 
         // Cancel Answer
-        ConnectionManager.onEvent(.CancelAnswer) { [unowned self] peer, object in
+        ConnectionManager.onEvent(.cancelAnswer) { [unowned self] peer, _ in
             let sender = Player(peer: peer)
             self.answers = self.answers.filter { $0.sender != sender }
             self.updateWaitingForPeers()
         }
 
         // Vote
-        ConnectionManager.onEvent(.Vote) { [unowned self] peer, object in
+        ConnectionManager.onEvent(.vote) { [unowned self] peer, object in
             let voter = Player(peer: peer)
             let votee = Player(mpcSerialized: (object as! [String: NSData])["votee"]! as Data)
             self.addVote(voter, to: votee)
         }
 
         // Next Card
-        ConnectionManager.onEvent(.NextCard) { [unowned self] _, object in
+        ConnectionManager.onEvent(.nextCard) { [unowned self] _, object in
             let dict = object as! [String: NSData]
             let winner = Player(mpcSerialized: dict["winner"]! as Data)
             let blackCard = Card(mpcSerialized: dict["blackCard"]! as Data)
@@ -366,7 +368,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
         }
 
         // End Game
-        ConnectionManager.onEvent(.EndGame) { [unowned self] _, _ in
+        ConnectionManager.onEvent(.endGame) { [unowned self] _, _ in
             self.dismiss()
         }
     }
@@ -378,10 +380,10 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     fileprivate func nextCardWithWinner(_ winner: Player) {
-        let blackCard = CardManager.nextCardsWithType(.Black).first!
+        let blackCard = CardManager.nextCardsWithType(.black).first!
         scores[winner]! += 1
-        ConnectionManager.sendEventForEach(.NextCard) {
-            let nextWhiteCards = CardManager.nextCardsWithType(.White, count: UInt(10 - self.whiteCards.count))
+        ConnectionManager.sendEventForEach(.nextCard) {
+            let nextWhiteCards = CardManager.nextCardsWithType(.white, count: UInt(10 - self.whiteCards.count))
             let payload: [String: MPCSerializable] = [
                 "blackCard": blackCard,
                 "whiteCards": CardArray(array: nextWhiteCards),
@@ -389,7 +391,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             ]
             return payload
         }
-        let newWhiteCards = CardManager.nextCardsWithType(.White, count: UInt(10 - whiteCards.count))
+        let newWhiteCards = CardManager.nextCardsWithType(.white, count: UInt(10 - whiteCards.count))
         nextBlackCard(blackCard, newWhiteCards: newWhiteCards, winner: winner)
     }
 
@@ -416,7 +418,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             self.scrollView.isScrollEnabled = false
             self.scrollViewContentView.layoutSubviews()
             self.viewDidLayoutSubviews()
-        }) 
+        })
         for view in otherBlackCardViews {
             view.removeFromSuperview()
         }
@@ -452,9 +454,9 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             return
         }
         let votee = voteeForCurrentPage
-        addVote(Player.getMe(), to: votee)
+        addVote(.getMe(), to: votee)
         hasVoted = true
-        ConnectionManager.sendEvent(.Vote, object: ["votee": votee])
+        ConnectionManager.sendEvent(.vote, object: ["votee": votee])
 
         if hasEveryPeerVoted {
             if let winner = winner {
@@ -505,11 +507,13 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     fileprivate func addSelectedCardToBlackCard(_ selectedCard: Card) {
         if let range = blackCardLabel.text?.range(of: blackCardPlaceholder) {
             blackCardLabel.text = blackCardLabel.text?.replacingCharacters(in: range, with: selectedCard.content)
-            let start = blackCardLabel.text!.characters.distance(from: blackCardLabel.text!.startIndex, to: range.lowerBound)
+            let start = blackCardLabel.text!.characters.distance(from: blackCardLabel.text!.startIndex,
+                                                                 to: range.lowerBound)
             let length = selectedCard.content.characters.count
-            blackCardLabel.placeholderRanges.append(NSMakeRange(start, length))
+            blackCardLabel.placeholderRanges.append(NSRange(location: start, length: length))
         } else {
-            let range = NSMakeRange(blackCardLabel.text!.characters.count + 1, selectedCard.content.characters.count)
+            let range = NSRange(location: blackCardLabel.text!.characters.count + 1,
+                                length: selectedCard.content.characters.count)
             blackCardLabel.placeholderRanges.append(range)
             blackCardLabel.text! += "\n\(selectedCard.content)"
         }
@@ -532,7 +536,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             })
 
             let attr = MPCAttributedString(attributedString: blackCardLabel.attributedText!)
-            ConnectionManager.sendEvent(.Answer, object: ["answer": attr])
+            ConnectionManager.sendEvent(.answer, object: ["answer": attr])
             prepareForBlackCards()
         }
     }
@@ -542,17 +546,19 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
             let blackCardLabelNSString = blackCardLabel.text! as NSString
             whiteCardCollectionView.performBatchUpdates({
                 let content = blackCardLabelNSString.substring(with: lastRange)
-                let lastWhiteCard = Card(content: content, type: .White, expansion: "")
+                let lastWhiteCard = Card(content: content, type: .white, expansion: "")
                 self.whiteCards.append(lastWhiteCard)
                 let indexPath = IndexPath(item: self.whiteCards.count - 1, section: 0)
                 self.whiteCardCollectionView.insertItems(at: [indexPath])
-                }, completion: nil)
+            }, completion: nil)
             blackCardLabel.text = blackCardLabelNSString.replacingCharacters(in: lastRange, with: blackCardPlaceholder)
             let placeholderlessLength = blackCardPlaceholder.characters.count + 1
 
-            let blackCardLabelSubstring = blackCardLabelNSString.substring(from: blackCardLabelNSString.length - placeholderlessLength)
+            let blackCardLabelSubstring = blackCardLabelNSString
+                .substring(from: blackCardLabelNSString.length - placeholderlessLength)
             if blackCardLabelSubstring == "\n\(blackCardPlaceholder)" {
-                blackCardLabel.text = blackCardLabelNSString.substring(to: blackCardLabelNSString.length - placeholderlessLength)
+                blackCardLabel.text = blackCardLabelNSString
+                    .substring(to: blackCardLabelNSString.length - placeholderlessLength)
             }
             blackCardLabel.placeholderRanges.removeLast()
             let blackCardStyled = NSMutableAttributedString(string: blackCardLabel.text!)
@@ -571,7 +577,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
                 self.scrollViewContentView.layoutSubviews()
                 self.viewDidLayoutSubviews()
             }
-            ConnectionManager.sendEvent(.CancelAnswer)
+            ConnectionManager.sendEvent(.cancelAnswer)
         }
     }
 
@@ -606,7 +612,7 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     @objc func collectionView(_ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                              cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WhiteCardCell.reuseID,
                                                       for: indexPath) as! WhiteCardCell
         cell.label.text = whiteCards[indexPath.row].content
@@ -616,8 +622,8 @@ final class GameViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     @objc func collectionView(_ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+                              layout collectionViewLayout: UICollectionViewLayout,
+                              sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         let hash = whiteCards[indexPath.row].content.hash
         var size = CGSize(width: collectionView.frame.size.width - 32, height: 50)
         if let heightNumber = cellHeights.object(forKey: hash as AnyObject) as? NSNumber {

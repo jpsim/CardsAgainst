@@ -13,7 +13,8 @@ private let pg13 = true
 private func loadCards() -> ([Card], [Card]) {
     let resourceName = pg13 ? "cards_pg13" : "cards"
     let jsonPath = Bundle.main.path(forResource: resourceName, ofType: "json")
-    let cards = try! JSONSerialization.jsonObject(with: Data(contentsOf: URL(fileURLWithPath: jsonPath!)), options: []) as! [[String: String]]
+    let cards = try! JSONSerialization.jsonObject(with: Data(contentsOf: URL(fileURLWithPath: jsonPath!)),
+                                                  options: []) as! [[String: String]]
 
     var whiteCards = [Card]()
     var blackCards = [Card]()
@@ -22,7 +23,7 @@ private func loadCards() -> ([Card], [Card]) {
         let card = Card(content: card["text"]!,
             type: CardType(rawValue: card["cardType"]!)!,
             expansion: card["expansion"]!)
-        if card.type == .White {
+        if card.type == .white {
             whiteCards.append(card)
         } else {
             blackCards.append(card)
@@ -39,17 +40,17 @@ private var (mWhiteCards, mBlackCards) = ([Card](), [Card]())
 struct CardManager {
     static func nextCardsWithType(_ type: CardType, count: UInt = 1) -> [Card] {
         let generator = Array(repeating: 0, count: Int(count))
-        if type == .Black {
-            return generator.map { _ in return self.takeRandom(&mBlackCards, original: blackCards) }
+        if type == .black {
+            return generator.map { _ in return takeRandom(&mBlackCards, original: blackCards) }
         } else {
-            return generator.map { _ in return self.takeRandom(&mWhiteCards, original: whiteCards) }
+            return generator.map { _ in return takeRandom(&mWhiteCards, original: whiteCards) }
         }
     }
 
     fileprivate static func takeRandom<U>(_ mutable: inout [U], original: [U]) -> U {
         if mutable.count == 0 {
             // reshuffle
-            mutable = original.sorted { _,_  in arc4random() % 2 == 0 }
+            mutable = original.sorted { _, _  in arc4random() % 2 == 0 }
         }
         return mutable.removeLast()
     }

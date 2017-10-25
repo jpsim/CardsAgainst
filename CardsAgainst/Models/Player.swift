@@ -59,6 +59,6 @@ struct Player: Hashable, Equatable, MPCSerializable {
     }
 }
 
-func ==(lhs: Player, rhs: Player) -> Bool {
+func == (lhs: Player, rhs: Player) -> Bool {
     return lhs.name == rhs.name
 }

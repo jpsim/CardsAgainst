@@ -11,7 +11,7 @@ import Foundation
 let blackCardPlaceholder = "________"
 
 enum CardType: String {
-    case White = "A", Black = "Q"
+    case white = "A", black = "Q"
 }
 
 struct Card: MPCSerializable {
@@ -20,7 +20,8 @@ struct Card: MPCSerializable {
     let expansion: String
 
     var mpcSerialized: Data {
-        return NSKeyedArchiver.archivedData(withRootObject: ["content": content, "type": type.rawValue, "expansion": expansion])
+        let dictionary = ["content": content, "type": type.rawValue, "expansion": expansion]
+        return NSKeyedArchiver.archivedData(withRootObject: dictionary)
     }
 
     init(content: String, type: CardType, expansion: String) {
@@ -38,13 +39,13 @@ struct Card: MPCSerializable {
 }
 
 struct CardArray: MPCSerializable {
-    let array: Array<Card>
+    let array: [Card]
 
     var mpcSerialized: Data {
         return NSKeyedArchiver.archivedData(withRootObject: array.map { $0.mpcSerialized })
     }
 
-    init(array: Array<Card>) {
+    init(array: [Card]) {
         self.array = array
     }
 

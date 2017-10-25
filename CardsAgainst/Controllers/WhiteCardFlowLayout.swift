@@ -8,6 +8,7 @@
 
 import UIKit
 
+// swiftlint:disable:next identifier_name
 private func easeInOut( _ t: CGFloat, b: CGFloat, c: CGFloat, d: CGFloat) -> CGFloat {
     var t = t
     t /= d/2
