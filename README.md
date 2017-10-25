@@ -2,7 +2,7 @@
 
 ## An iOS game for horrible people
 
-A peer-to-peer [Cards Against Humanity][cah] game for iOS, written with Multipeer Connectivity in Swift.
+A peer-to-peer [Cards Against Humanity][cah] game for iOS, written with Multipeer Connectivity in Swift 4.
 
 ![](https://www.objc.io/images/issue-18/dedicated-9942fc7b.gif)
 
