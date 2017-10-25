@@ -15,8 +15,8 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     fileprivate let startGameButton = UIButton(type: .system)
     fileprivate let separator = UIView()
-    fileprivate let collectionView = UICollectionView(frame: CGRect.zero,
-        collectionViewLayout: UICollectionViewFlowLayout())
+    fileprivate let collectionView = UICollectionView(frame: .zero,
+                                                      collectionViewLayout: UICollectionViewFlowLayout())
 
     // MARK: Lifecycle
 
@@ -34,10 +34,10 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        ConnectionManager.onConnect { _ in
+        ConnectionManager.onConnect { _, _ in
             self.updatePlayers()
         }
-        ConnectionManager.onDisconnect { _ in
+        ConnectionManager.onDisconnect { _, _ in
             self.updatePlayers()
         }
         ConnectionManager.onEvent(.StartGame) { [unowned self] _, object in
@@ -65,7 +65,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     fileprivate func setupLaunchImage() {
-        view.addSubview(UIImageView(image: UIImage.launchImage()))
+        view.addSubview(UIImageView(image: .launchImage()))
 
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         blurView.frame = view.bounds
@@ -78,7 +78,10 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
         startGameButton.titleLabel!.font = startGameButton.titleLabel!.font.withSize(25)
         startGameButton.setTitle("Waiting For Players", for: .disabled)
         startGameButton.setTitle("Start Game", for: UIControlState())
-        startGameButton.addTarget(self, action: #selector(MenuViewController.startGame as (MenuViewController) -> () -> ()), for: .touchUpInside)
+        startGameButton.addTarget(
+            self, action: #selector(MenuViewController.startGame as (MenuViewController) -> () -> ()),
+            for: .touchUpInside
+        )
         startGameButton.isEnabled = false
         view.addSubview(startGameButton)
 
@@ -106,15 +109,11 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     fileprivate func setupCollectionView() {
         // Collection View
-        let cvLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        cvLayout.itemSize = CGSize(width: separator.frame.size.width, height: 50)
-        cvLayout.minimumLineSpacing = 0
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(PlayerCell.self,
-            forCellWithReuseIdentifier: PlayerCell.reuseID)
+        collectionView.register(PlayerCell.self, forCellWithReuseIdentifier: PlayerCell.reuseID)
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
 
@@ -129,7 +128,7 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: Actions
 
-    func startGame() {
+    @objc func startGame() {
         let blackCard = CardManager.nextCardsWithType(.Black).first!
         let whiteCards = CardManager.nextCardsWithType(.White, count: 10)
         sendBlackCard(blackCard)
@@ -158,13 +157,19 @@ final class MenuViewController: UIViewController, UICollectionViewDataSource, UI
 
     // MARK: UICollectionViewDataSource
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    @objc func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ConnectionManager.otherPlayers.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayerCell.reuseID, for: indexPath) as! PlayerCell
         cell.label.text = ConnectionManager.otherPlayers[indexPath.row].name
         return cell
+    }
+
+    @objc func collectionView(_ collectionView: UICollectionView,
+                              layout collectionViewLayout: UICollectionViewLayout,
+                              sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width - 32, height: 50)
     }
 }

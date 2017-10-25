@@ -23,7 +23,7 @@ final class TouchableLabel: UILabel {
     fileprivate func setLastTokenAlpha(_ alpha: CGFloat) {
         if let lastRange = placeholderRanges.last,
             let mAttributedText = attributedText?.mutableCopy() as? NSMutableAttributedString {
-            mAttributedText.addAttribute(NSForegroundColorAttributeName, value: tintColor.withAlphaComponent(alpha), range: lastRange)
+            mAttributedText.addAttribute(.foregroundColor, value: tintColor.withAlphaComponent(alpha), range: lastRange)
             attributedText = mAttributedText
         }
     }

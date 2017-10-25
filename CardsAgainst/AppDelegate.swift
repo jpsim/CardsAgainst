@@ -22,7 +22,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         // Appearance
         application.statusBarStyle = .lightContent
         UINavigationBar.appearance().barTintColor = navBarColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: lightColor]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: lightColor]
         window?.tintColor = appTintColor
 
         // Simultaneously advertise and browse for other players

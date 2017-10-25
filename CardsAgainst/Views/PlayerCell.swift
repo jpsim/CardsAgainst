@@ -28,11 +28,11 @@ final class PlayerCell: UICollectionViewCell {
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = lightColor
-        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.font = .boldSystemFont(ofSize: 22)
 
         // Layout
         constrain(label) { label in
-            label.edges == inset(label.superview!.edges, 15, 10); return
+            label.edges == inset(label.superview!.edges, 15, 10)
         }
     }
 }

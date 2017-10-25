@@ -19,7 +19,7 @@ final class WhiteCardCell: UICollectionViewCell {
             return super.isHighlighted
         }
         set {
-            contentView.backgroundColor = newValue ? UIColor.gray : lightColor
+            contentView.backgroundColor = newValue ? .gray : lightColor
             super.isHighlighted = newValue
         }
     }
@@ -45,11 +45,11 @@ final class WhiteCardCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        label.font = UIFont.whiteCardFont
+        label.font = .whiteCardFont
 
         // Layout
         constrain(label) { label in
-            label.edges == inset(label.superview!.edges, 15, 10); return
+            label.edges == inset(label.superview!.edges, 15, 10)
         }
     }
 
