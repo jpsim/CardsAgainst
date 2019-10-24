@@ -46,6 +46,7 @@ final class WhiteCardCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.font = .whiteCardFont
+        //label.textColor = darkColor
 
         // Layout
         constrain(label) { label in
